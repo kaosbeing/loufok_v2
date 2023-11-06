@@ -1,4 +1,3 @@
-/* CSS RESET v05-2023  */
 html,
 body,
 p,
@@ -25,7 +24,6 @@ h6 {
   margin: 0;
   padding: 0;
 }
-
 h1,
 h2,
 h3,
@@ -78,4 +76,49 @@ table {
 td,
 th {
   padding: 0;
+}
+
+/* ---CUSTOM--- */
+a {
+  text-decoration: none;
+  display: inline-block;
+  height: fit-content;
+}
+span {
+  display: inline-block;
+  height: fit-content;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+.form-input {
+  border: none;
+  background: none;
+}
+
+.form-input:focus {
+  outline: none;
+}
+textarea {
+  resize: none;
+  height: fit-content;
+  overflow: hidden;
 }
