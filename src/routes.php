@@ -6,20 +6,19 @@ $routes = [
         'method' => ['GET'],
         'script' => 'index.php',
     ],
-
     [
-        'route' => ['/404'],
+        'route' => ['/admin/dashboard'],
         'method' => ['GET'],
-        'script' => '404.php',
+        'script' => 'index.php',
     ],
     [
-        'route' => ['/403'],
+        'route' => ['/admin/nouvelleloufokerie'],
         'method' => ['GET'],
-        'script' => '403.php',
+        'script' => 'index.php',
     ],
     [
-        'route' => ['/301'],
+        'route' => ['/'],
         'method' => ['GET'],
-        'script' => '301.php',
+        'script' => 'index.php',
     ],
 ];
