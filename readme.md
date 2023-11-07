@@ -1,4 +1,5 @@
 # Loufok reboot !!
+
 La nouvelle version de vos loufokeries préférées est désormais dans vos smartphones !! À portée de click digital !!
 
 Interfaces :
@@ -8,6 +9,7 @@ Contribution cachée : Changer les points d'interrogation
 Interface Loufokeries selon le blocking (voir DM)
 
 Todolist :
+
 - [ ] Projet : init BDD
 - [ ] Projet : init CSS
 - [ ] Projet : init Controller template
@@ -17,10 +19,11 @@ Todolist :
 - [ ] Admin : Nouvelle loufokerie
 - [ ] User : rejoindre loufokerie
 - [ ] User : Contribuer
-- [ ] User : Consulter dernier cadavre (juste le dernier auquel il a participé)
+- [ ] User : Consulter dernier loufokerie (juste le dernier auquel il a participé)
 
 OPTIONNEL
+
 - [ ] User : Voir profil
-- [ ] User : Modifier données (nom plume, mdp) 
+- [ ] User : Modifier données (nom plume, mdp)
 - [ ] Projet : Websocket (???)
 - [ ] Admin : Modifier Loufokerie (???)
