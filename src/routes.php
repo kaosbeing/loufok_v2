@@ -2,23 +2,63 @@
 
 $routes = [
     [
-        'route' => ['/'],
-        'method' => ['GET'],
-        'script' => 'index.php',
+        'route' => ['/', '/login'],
+        'method' => 'GET',
+        'script' => '',
     ],
     [
-        'route' => ['/admin/dashboard'],
-        'method' => ['GET'],
-        'script' => 'index.php',
+        'route' => ['/', '/login'],
+        'method' => 'POST',
+        'script' => '',
     ],
     [
-        'route' => ['/admin/nouvelleloufokerie'],
-        'method' => ['GET'],
-        'script' => 'index.php',
+        'route' => ['/logout'],
+        'method' => 'GET',
+        'script' => '',
     ],
     [
-        'route' => ['/'],
-        'method' => ['GET'],
-        'script' => 'index.php',
+        'route' => ['/404'],
+        'method' => 'GET',
+        'script' => '',
+    ],
+    [
+        'route' => ['/403'],
+        'method' => 'GET',
+        'script' => '',
+    ],
+    [
+        'route' => ['/admin'],
+        'method' => 'GET',
+        'script' => '',
+    ],
+    [
+        'route' => ['/admin/nouveau'],
+        'method' => 'GET',
+        'script' => '',
+    ],
+    [
+        'route' => ['/admin/nouveau'],
+        'method' => 'POST',
+        'script' => '',
+    ],
+    [
+        'route' => ['/mon-espace'],
+        'method' => 'GET',
+        'script' => '',
+    ],
+    [
+        'route' => ['/mon-espace/participation'],
+        'method' => 'GET',
+        'script' => '',
+    ],
+    [
+        'route' => ['/mon-espace/participation'],
+        'method' => 'POST',
+        'script' => '',
+    ],
+    [
+        'route' => ['/mon-espace/historique'],
+        'method' => 'GET',
+        'script' => '',
     ],
 ];

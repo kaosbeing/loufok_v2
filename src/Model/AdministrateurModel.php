@@ -1,6 +1,6 @@
 <?php
 
-class Administrateur extends Model
+class AdministrateurModel extends Model
 {
     protected $tableName = APP_TABLE_PREFIX.'administrateur';
     protected static $instance;

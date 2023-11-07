@@ -1,6 +1,6 @@
 <?php
 
-class Loufokerie extends Model
+class LoufokerieModel extends Model
 {
     protected $tableName = APP_TABLE_PREFIX.'loufokerie';
     protected static $instance;
