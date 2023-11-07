@@ -15,6 +15,8 @@ Todolist :
 - [ ] Projet : init Controller template
 - [ ] Projet : init view template
 - [ ] Projet : Contrôles sur la BDD
+- [ ] Projet : manifest JSON
+- [ ] Projet : cache CSS
 
 - [ ] Contrôleur : User
 - [ ] Contrôleur : Admin
