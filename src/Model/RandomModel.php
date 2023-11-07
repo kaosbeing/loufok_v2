@@ -1,6 +1,6 @@
 <?php
 
-class Random extends Model
+class RandomModel extends Model
 {
     protected $tableName = APP_TABLE_PREFIX.'random';
     protected static $instance;

@@ -1,9 +1,6 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['load'])) {
-    $_SESSION['load'] = false;
-}
 
 require 'routes.php';
 
@@ -15,25 +12,29 @@ $route = $route === '' ? '/' : $route;
 foreach ($routes as $r) {
     if (in_array($route, $r['route']) && in_array($_SERVER['REQUEST_METHOD'], $r['method'])) {
         if (str_contains($route, '/admin')) {
-            if (isset($_COOKIE['username']) && isset($_COOKIE['usertoken'])) {
-                $admin = Admin::getInstance()->findBy(['username' => $_COOKIE['username']]);
-                $admin = $admin[0];
-
-                require 'View/' . $r['script'];
-
-                exit;
+            if (isset($_COOKIE['email']) && isset($_COOKIE['token'])) {
+                $user = Administrateur::getInstance()->findBy(['ad_mail_administrateur' => $_COOKIE['email']])[0];
+                if ($_COOKIE['token'] == $user['token']) {
+                    require 'View/'.$r['script'];
+                    exit;
+                }
             }
             require 'View/403.php';
             exit;
         }
-
-        require 'View/' . $r['script'];
-        if ($_SESSION['load'] == false) {
-            include 'View/loader.php';
-            $_SESSION['load'] = true;
+        if (str_contains($route, '/mon-espace')) {
+            if (isset($_COOKIE['email']) && isset($_COOKIE['token'])) {
+                $user = Joueur::getInstance()->findBy(['ad_mail_joueur' => $_COOKIE['email']])[0];
+                if ($_COOKIE['token'] == $user['token']) {
+                    require 'View/'.$r['script'];
+                    exit;
+                }
+            }
+            require 'View/403.php';
+            exit;
         }
+        require 'View/'.$r['script'];
         exit;
     }
 }
-
 require 'View/404.php';
