@@ -16,10 +16,17 @@ Todolist :
 - [ ] Projet : init view template
 - [ ] Projet : Contrôles sur la BDD
 
+- [ ] Contrôleur : User
+- [ ] Contrôleur : Admin
+- [ ] Contrôleur : Auth
+- [ ] Contrôleur : Errors (pour les 404, 403, etc)
+- [ ] Contrôleur : API (pour daylire)
+
 - [ ] Admin : Nouvelle loufokerie
 - [ ] User : rejoindre loufokerie
 - [ ] User : Contribuer
 - [ ] User : Consulter dernier loufokerie (juste le dernier auquel il a participé)
+- [ ] API ??
 
 OPTIONNEL
 
