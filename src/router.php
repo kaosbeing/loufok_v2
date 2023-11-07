@@ -19,21 +19,21 @@ foreach ($routes as $r) {
                 $admin = Admin::getInstance()->findBy(['username' => $_COOKIE['username']]);
                 $admin = $admin[0];
 
-                require 'templates/'.$r['script'];
+                require 'View/' . $r['script'];
 
                 exit;
             }
-            require 'templates/403.php';
+            require 'View/403.php';
             exit;
         }
 
-        require 'templates/'.$r['script'];
+        require 'View/' . $r['script'];
         if ($_SESSION['load'] == false) {
-            include 'templates/loader.php';
+            include 'View/loader.php';
             $_SESSION['load'] = true;
         }
         exit;
     }
 }
 
-require 'templates/404.php';
+require 'View/404.php';

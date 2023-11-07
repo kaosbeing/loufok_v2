@@ -17,8 +17,8 @@ $routes = [
         'script' => 'index.php',
     ],
     [
-        'route' => ['/'],
+        'route' => ['/login'],
         'method' => ['GET'],
-        'script' => 'index.php',
+        'script' => 'login.php',
     ],
 ];
