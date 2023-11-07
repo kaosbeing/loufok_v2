@@ -2,7 +2,24 @@
 
 class Head
 {
-    public static function fullhead()
+
+
+    /**
+     * Classe Head contenant les méthodes suivantes :
+     *   - basehead()                       pour générer tous les tags par défaut
+     *   - meta()                           pour générer les tags meta par défaut (charset & viewport)
+     *   - favicon()                        pour importer le favicon situé dans /public/assets
+     *   - css()                            pour importer le fichier main.css, commun à toutes les pages
+     *   - script( string $script )         pour importer un script dont le nom est donné en paramètre
+     *   - scripts( array $scripts )        pour importer plusieurs scripts
+     *   - title( string $title )           pour générer le tag du title
+     */
+
+
+    /**
+     * Renvoie tous les tags HTML par défaut d'un head 
+     */
+    public static function basehead()
     {
         Head::meta();
         Head::favicon();
@@ -10,6 +27,9 @@ class Head
     }
 
 
+    /**
+     * Renvoie les tags meta par défaut 
+     */
     public static function meta()
     {
 ?>
@@ -48,7 +68,7 @@ class Head
     {
     ?>
         <script src="<?php APP_ROOT_URL_COMPLETE ?>/public/js/<?php $script ?>.js" defer></script>
-<?php
+    <?php
     }
 
     /**
@@ -59,6 +79,16 @@ class Head
         foreach ($scripts as $script) {
             Head::script($script);
         }
+    }
+
+    /**
+     * Renvoie un tag de titre 
+     */
+    public static function title(string $title)
+    {
+    ?>
+        <title><?php $title ?></title>
+<?php
     }
 }
 ?>
