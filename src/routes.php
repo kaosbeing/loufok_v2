@@ -4,7 +4,7 @@ $routes = [
     [
         'route' => ['/', '/login'],
         'method' => 'GET',
-        'script' => '',
+        'script' => 'auth@loginPage',
     ],
     [
         'route' => ['/', '/login'],
