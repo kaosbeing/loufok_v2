@@ -10,10 +10,10 @@ Interface Loufokeries selon le blocking (voir DM)
 
 Todolist :
 
-- [ ] Projet : init BDD
-- [ ] Projet : init CSS
+- [x] Projet : init BDD
+- [x] Projet : init CSS
 - [ ] Projet : init Controller template
-- [ ] Projet : init view template
+~~- [ ] Projet : init view template~~
 - [ ] Projet : Contrôles sur la BDD
 - [ ] Projet : manifest JSON
 - [ ] Projet : cache CSS
@@ -28,11 +28,14 @@ Todolist :
 - [ ] User : rejoindre loufokerie
 - [ ] User : Contribuer
 - [ ] User : Consulter dernier loufokerie (juste le dernier auquel il a participé)
-- [ ] API ??
+- [ ] API
+- [ ] API : Dispatcher
 
 OPTIONNEL
 
+- [ ] Loufokerie : Un blob derrière chaque contribution pour faire un effet joli
 - [ ] User : Voir profil
 - [ ] User : Modifier données (nom plume, mdp)
+
 - [ ] Projet : Websocket (???)
 - [ ] Admin : Modifier Loufokerie (???)
