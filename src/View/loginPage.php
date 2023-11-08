@@ -10,7 +10,6 @@ class LoginPage
         <html lang="en">
 
         <head>
-
             <?php
             Head::basehead();
             Head::title("Connexion");
