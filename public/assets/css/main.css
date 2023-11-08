@@ -1,7 +1,7 @@
 @import url(./reset.css);
 @import url(./../fonts/HelveticaNowDisplay/helvetica.css);
 
-html {
+:root {
   --primary: #8531da;
   --primary-use: #6a27ae;
   --disabled: #777779;
@@ -12,6 +12,28 @@ html {
   font-family: var(--helvetica);
 }
 
+.d-none {
+  display: none !important;
+}
+
+.title--big {
+  font-size: 2rem;
+  font-weight: 600;
+  font-variant: small-caps;
+  color: var(--primary);
+  text-decoration-line: overline underline;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.title--small {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
 .button {
   display: flex;
   padding: 10px 24px;
@@ -28,16 +50,6 @@ html {
   background: var(--primary-use);
 }
 
-.input-style {
-  border-radius: 10px;
-  border: 1px solid var(--primary);
-  padding: 1rem;
-}
-
-.input-style:focus-within {
-  outline: 1px solid var(--primary-use);
-}
-
 .form {
   display: flex;
   flex-direction: column;
@@ -48,7 +60,7 @@ html {
   gap: 2rem;
 }
 
-.form-element {
+.form__element {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,33 +68,14 @@ html {
   align-self: stretch;
 }
 
-.contribution-input {
-  width: 100%;
-}
-
-.contribution-text {
-  width: 100%;
-  border-radius: 85% 15% 85% 15% / 15% 85% 15% 85%;
-  background-color: var(--primary);
-  color: white;
-  padding: 10%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.contribution-hide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  background-color: var(--primary);
-  border-radius: 85% 15% 85% 15% / 15% 85% 15% 85%;
+.input--custom-style {
+  border-radius: 10px;
+  border: 1px solid var(--primary);
   padding: 1rem;
 }
 
-.contribution-hide img {
-  height: 24px;
+.input--custom-style:focus-within {
+  outline: 1px solid var(--primary-use);
 }
 
 .contributions {
@@ -95,23 +88,23 @@ html {
   gap: 1rem;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: 600;
-  font-variant: small-caps;
-  color: var(--primary);
-  text-decoration-line: overline underline;
+.contribution {
+  width: 100%;
+  border-radius: 85% 15% 85% 15% / 15% 85% 15% 85%;
+  background-color: var(--primary);
+  color: white;
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-h2 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-h4 {
-  font-weight: 600;
-  font-size: 1.1rem;
+.contribution--unknown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 1rem;
 }
 
 .loufokeries {
@@ -134,35 +127,15 @@ h4 {
   width: 100%;
 }
 
-.loufokerie img {
+.loufokerie__img {
   height: 48px;
 }
 
-.loufokerie-info {
+.loufokerie__info {
   display: flex;
   align-self: stretch;
   align-items: center;
   justify-content: space-between;
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  background-color: var(--primary);
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-.menu a {
-  height: 24px;
-}
-
-.menu a img {
-  height: 24px;
 }
 
 .switch {
@@ -171,8 +144,24 @@ h4 {
   gap: 3rem;
 }
 
-.d-none {
-  display: none !important;
+.switch__button {
+  padding: 10px 24px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 85% 15% 85% 15% / 15% 85% 15% 85%;
+  color: var(--primary);
+  border: var(--primary) solid 2px;
+  transition: all ease-in-out 0.24s;
+}
+
+.switch__button:hover {
+  color: white;
+  background-color: var(--primary);
+}
+
+.switch__button.activated {
+  color: white;
+  background-color: var(--primary);
 }
 
 .joueurs {
@@ -181,9 +170,6 @@ h4 {
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
-}
-
-.joueurs-noms {
   color: var(--primary);
   text-align: center;
 }
@@ -195,31 +181,11 @@ h4 {
   width: 100%;
 }
 
-.info span {
+.info__span {
   padding: 10px 24px;
   justify-content: center;
   align-items: center;
   border-radius: 85% 15% 85% 15% / 15% 85% 15% 85%;
   color: var(--primary);
   border: var(--primary) solid 2px;
-}
-
-.switch-button {
-  padding: 10px 24px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 85% 15% 85% 15% / 15% 85% 15% 85%;
-  color: var(--primary);
-  border: var(--primary) solid 2px;
-  transition: all ease-in-out 0.24s;
-}
-
-.switch-button:hover {
-  color: white;
-  background-color: var(--primary);
-}
-
-.switch-button.activated {
-  color: white;
-  background-color: var(--primary);
 }
