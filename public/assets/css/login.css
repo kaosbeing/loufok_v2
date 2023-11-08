@@ -17,7 +17,7 @@ main {
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
 }
-.checkbox {
+.form-checkbox {
   display: block;
   cursor: pointer;
 }
@@ -27,15 +27,15 @@ main {
   width: 24px;
 }
 
-.toggle {
+.form-toggle {
   display: none;
 }
-.toggle ~ .visible {
+.form-toggle ~ .eye--visible {
   display: none;
 }
-.toggle:checked ~ .visible {
+.form-toggle:checked ~ .eye--visible {
   display: inline-block;
 }
-.toggle:checked ~ .hide {
+.form-toggle:checked ~ .eye--hide {
   display: none;
 }

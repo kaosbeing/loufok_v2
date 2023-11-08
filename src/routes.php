@@ -9,7 +9,7 @@ $routes = [
     [
         'route' => ['/', '/login'],
         'method' => 'POST',
-        'script' => '',
+        'script' => 'auth@logIn',
     ],
     [
         'route' => ['/logout'],
