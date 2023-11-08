@@ -8,7 +8,7 @@ class Head
      * Classe Head contenant les méthodes suivantes :
      *   - basehead()                       pour générer tous les tags par défaut
      *   - meta()                           pour générer les tags meta par défaut (charset & viewport)
-     *   - favicon()                        pour importer le favicon situé dans /public/assets
+     *   - favicon()                        pour importer le favicon situé dans /assets
      *   - css()                            pour importer le fichier main.css, commun à toutes les pages
      *   - script( string $script )         pour importer un script dont le nom est donné en paramètre
      *   - scripts( array $scripts )        pour importer plusieurs scripts
@@ -23,7 +23,6 @@ class Head
     {
         Head::meta();
         Head::favicon();
-        Head::css();
     }
 
 
@@ -45,20 +44,30 @@ class Head
     public static function favicon()
     {
     ?>
-        <link rel="preload" href="<?php APP_ROOT_URL_COMPLETE ?>/public/assets/favicon.svg" as="image" type="image/svg+xml">
-        <link rel="icon" href="<?php APP_ROOT_URL_COMPLETE ?>/public/assets/favicon.svg" type="image/svg+xml">
-        <link rel="icon" href="<?php APP_ROOT_URL_COMPLETE ?>/public/assets/favicon.png" type="image/png">
+        <link rel="preload" href="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/favicon.svg" as="image" type="image/svg+xml">
+        <link rel="icon" href="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/favicon.png" type="image/png">
     <?php
     }
 
     /**
-     * Renvoie les tags HTML lié au css
+     * Importe une feuille css spécifiée
      */
-    public static function css()
+    public static function css($name)
     {
     ?>
-        <link rel="stylesheet" href="<?php APP_ROOT_URL_COMPLETE ?>/public/css/main.css">
+        <link rel="stylesheet" href="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/css/<?php echo $name ?>.css">
     <?php
+    }
+
+    /**
+     * Importe plusieurs feuilles css spécifiées
+     */
+    public static function cssArray($cssArray)
+    {
+        foreach ($cssArray as $css) {
+            Head::css($css);
+        }
     }
 
     /**
@@ -67,14 +76,14 @@ class Head
     public static function script(string $script)
     {
     ?>
-        <script src="<?php APP_ROOT_URL_COMPLETE ?>/public/js/<?php $script ?>.js" defer></script>
+        <script src="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/scripts/<?php echo $script ?>.js" defer></script>
     <?php
     }
 
     /**
      * Renvoie les tags de scripts pour chaque script du tableau
      */
-    public static function scripts(array $scripts)
+    public static function scriptArray(array $scripts)
     {
         foreach ($scripts as $script) {
             Head::script($script);
