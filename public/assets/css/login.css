@@ -6,38 +6,36 @@ main {
   justify-content: center;
   height: 100vh;
 }
-.logotype {
-  height: 3rem;
-}
 
-.password {
-  width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-}
 .password-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
-.form-checkbox {
+.password {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.checkbox {
   display: block;
   cursor: pointer;
-}
-.form-toggle {
-  display: none;
 }
 .eye {
   color: var(--primary);
   height: 24px;
   width: 24px;
 }
-.form-toggle ~ .visible {
+
+.toggle {
   display: none;
 }
-.form-toggle:checked ~ .visible {
+.toggle ~ .visible {
+  display: none;
+}
+.toggle:checked ~ .visible {
   display: inline-block;
 }
-.form-toggle:checked ~ .hide {
+.toggle:checked ~ .hide {
   display: none;
 }
