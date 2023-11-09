@@ -10,7 +10,7 @@ class AuthController
          $user = $admin[0];
          if ($_POST['password'] == $user['mot_de_passe_administrateur']) {
              setcookie('email', $user['ad_mail_administrateur'], time() + (10 * 365 * 24 * 60 * 60));
-             setcookie('token', $token_gen, time() + time() + (10 * 365 * 24 * 60 * 60));
+             setcookie('token', $token_gen, time() + (10 * 365 * 24 * 60 * 60));
              AdministrateurModel::getInstance()->update($user['id'], [
                 'token' => $token_gen,
               ]);
@@ -22,8 +22,8 @@ class AuthController
      if ($joueur) {
          $user = $joueur[0];
          if ($_POST['password'] == $user['mot_de_passe_joueur']) {
-            setcookie('email', $user['ad_mail_administrateur'], time() + (10 * 365 * 24 * 60 * 60));
-            setcookie('token', $token_gen, time() + time() + (10 * 365 * 24 * 60 * 60));
+            setcookie('email', $user['ad_mail_joueur'], time() + (10 * 365 * 24 * 60 * 60));
+            setcookie('token', $token_gen, time() + (10 * 365 * 24 * 60 * 60));
              JoueurModel::getInstance()->update($user['id'], [
                 'token' => $token_gen,
               ]); 

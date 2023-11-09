@@ -19,7 +19,6 @@ class LoginPage
         </head>
 
         <body>
-            <h1 aria-label="Loufok"><img src="/assets/medias/images/logotype.svg" alt="Logotype" class="logotype"></h1>
             <form action="" method="POST" class="form"> <!-- To verify -->
                 <div class="form__element">
                     <label for="email">Email</label>
