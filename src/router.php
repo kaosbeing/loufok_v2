@@ -15,7 +15,7 @@ foreach ($routes as $r) {
 
         // Si la route contient le mot "admin", on vérifie les droits
         // ! Ce code empêche uniquement  les non-admin d'accéder aux routes admin, pas l'inverse
-        if (in_array("admin", explode($r['route'], "/"))) {
+        if (in_array("admin", explode($route, "/"))) {
             if (isset($_COOKIE['email']) && isset($_COOKIE['token'])) {
                 $user = AdministrateurModel::getInstance()->findBy(['ad_mail_administrateur' => $_COOKIE['email']])[0];
 
