@@ -7,11 +7,12 @@ class LoginPage
     {
 ?>
         <!DOCTYPE html>
-        <html lang="en">
+        <html lang="fr">
 
         <head>
             <?php
             Head::basehead();
+            Head::css("main");
             Head::title("Connexion");
             ?>
         </head>

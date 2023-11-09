@@ -96,7 +96,7 @@ class Head
     public static function title(string $title)
     {
     ?>
-        <title><?php $title ?></title>
+        <title><?php echo $title ?></title>
 <?php
     }
 }
