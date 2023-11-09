@@ -28,6 +28,11 @@ require 'Controller/UserController.php';
 require 'View/loginPage.php';
 require 'View/page403.php';
 require 'View/page404.php';
+require 'View/adminIndexPage.php';
+require 'View/adminNouveauPage.php';
+require 'View/userIndexPage.php';
+require 'View/userParticipationPage.php';
+require 'View/userHistoriquePage.php';
 
 /* Router */
 require 'router.php';
