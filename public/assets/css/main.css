@@ -1,4 +1,5 @@
 @import url(./reset.css);
+@import url(./header.css);
 @import url(./../fonts/HelveticaNowDisplay/helvetica.css);
 
 :root {
@@ -34,6 +35,7 @@
   font-weight: 600;
   font-size: 1.1rem;
 }
+
 .button {
   display: flex;
   padding: 10px 24px;
