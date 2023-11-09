@@ -7,6 +7,7 @@ require 'Libs/debug/dump_r.php';
 /* Classes métier */
 require 'Libs/HTTP.php';
 require 'Libs/Head.php';
+require 'Libs/Utils.php';
 
 /* Models/Entitys */
 require 'Model/Model.php';
@@ -25,6 +26,8 @@ require 'Controller/UserController.php';
 
 /* Views */
 require 'View/loginPage.php';
+require 'View/page403.php';
+require 'View/page404.php';
 
 /* Router */
 require 'router.php';
