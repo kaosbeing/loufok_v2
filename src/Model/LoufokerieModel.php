@@ -28,6 +28,14 @@ class LoufokerieModel extends Model
         return $this->query($sql)->fetch() ? $this->query($sql)->fetch() : null;
     }
 
+    public function findFuture(): ?array
+    {
+        $today = date('y-m-d');
+        $sql = "SELECT * FROM `{$this->tableName}` WHERE date_debut_loufokerie <='$today'";
+
+        return $this->query($sql)->fetchAll() ? $this->query($sql)->fetchAll() : null;
+    }
+
     /**
      * Renvoie le dernier cadavre terminé
      * @return array Le cadavre

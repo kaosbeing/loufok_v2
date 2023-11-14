@@ -19,7 +19,10 @@ class adminIndexPage
         </head>
 
         <body>
-            
+            <?php Utils::header('admin', false) ?>
+            <main>
+                <a href="/admin/nouveau" class="button">Créer un nouveau cadavre</a>
+            </main>
         </body>
 
         </html>
