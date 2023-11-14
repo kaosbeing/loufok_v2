@@ -32,9 +32,9 @@ class ContributionModel extends Model
     public function getArrayFullOfEmptyStringsExceptRandomAndOwnSubmission(int $id_joueur, int $id_loufokerie): ?array
     {
         $emptied = [];
-        $contributions = Contribution::getInstance()->findByOrdered(['id_loufokerie' => $id_loufokerie]);
-        $random = Random::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_cadavre' => $id_loufokerie])[0];
-        $joueur_contribution = Contribution::getInstance()->findBy(['id_joueur' =>$id_joueur, 'id_cadavre' => $id_loufokerie])[0];
+        $contributions = ContributionModel::getInstance()->findByOrdered(['id_loufokerie' => $id_loufokerie]);
+        $random = RandomModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_cadavre' => $id_loufokerie])[0];
+        $joueur_contribution = ContributionModel::getInstance()->findBy(['id_joueur' =>$id_joueur, 'id_cadavre' => $id_loufokerie])[0];
         foreach ($contributions as $contribution) {
             if ($contribution['id'] == $random['id']) {
                 array_push($emptied, $contribution);
