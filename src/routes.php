@@ -17,16 +17,6 @@ $routes = [
         'script' => 'auth@logOut',
     ],
     [
-        'route' => ['/404'],
-        'method' => 'GET',
-        'script' => '',
-    ],
-    [
-        'route' => ['/403'],
-        'method' => 'GET',
-        'script' => '',
-    ],
-    [
         'route' => ['/admin'],
         'method' => 'GET',
         'script' => 'admin@adminIndexPage',
@@ -47,18 +37,18 @@ $routes = [
         'script' => 'user@userIndexPage',
     ],
     [
-        'route' => ['/mon-espace/participation'],
+        'route' => ['/mon-espace/loufokerie'],
         'method' => 'GET',
-        'script' => 'user@userParticipationPage',
+        'script' => 'user@userLoufokeriePage',
     ],
     [
-        'route' => ['/mon-espace/participation'],
+        'route' => ['/mon-espace/loufokerie'],
         'method' => 'POST',
-        'script' => 'user@userParticipation',
+        'script' => 'user@userSubmission',
     ],
     [
         'route' => ['/mon-espace/historique'],
         'method' => 'GET',
         'script' => 'user@userHistoriquePage',
-    ],
+    ]
 ];

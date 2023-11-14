@@ -31,7 +31,7 @@ require 'View/page404.php';
 require 'View/adminIndexPage.php';
 require 'View/adminNouveauPage.php';
 require 'View/userIndexPage.php';
-require 'View/userParticipationPage.php';
+require 'View/userLoufokeriePage.php';
 require 'View/userHistoriquePage.php';
 
 /* Router */
