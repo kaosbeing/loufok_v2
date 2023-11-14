@@ -31,7 +31,7 @@ foreach ($routes as $r)
 
                 if ($_COOKIE['token'] != $user['token'])
                 {
-                    ErrorController::page403();
+                    ErrorController::page403($route);
                     exit;
                 }
             }
