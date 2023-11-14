@@ -17,7 +17,7 @@ class ErrorController
     }
 
     /* Returns the view for page 403 */
-    public static function page403()
+    public static function page403($route)
     {
         if (isset($_COOKIE['token']))
         {
