@@ -1,10 +1,8 @@
 <?php
 
-class Page404
-{
+class Page404 {
 
-    public static function render(array $datas = [])
-    {
+    public static function render(array $datas = []) {
 ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -12,7 +10,7 @@ class Page404
         <head>
             <?php
             Head::basehead();
-            Head::css("page404");
+            Head::css("errorPage");
             Head::title("Erreur 404 - Aucune page trouvée");
             ?>
         </head>
