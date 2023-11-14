@@ -51,9 +51,35 @@ class AuthController {
 
     public static function logOut() {
         /* Delete cookies */
-        setcookie('email', "", time() - 1);
-        setcookie('token', "", time() - 1);
-        HTTP::redirect();
+        if (isset($_COOKIE['token'])) {
+            unset($_COOKIE['token']);
+            setcookie('token', null, time()-1);
+        }
+        if (isset($_COOKIE['email'])) {
+            unset($_COOKIE['email']);
+            setcookie('email', null, time()-1);
+        }
+        HTTP::redirect('/login');
+    }
+    public static function logOutFromAll() {
+        $data['token'] = null;
+        $admin = AdministrateurModel::getInstance()->findBy(['ad_mail_administrateur' => $_COOKIE['email']])[0];
+        $joueur = JoueurModel::getInstance()->findBy(['ad_mail_joueur' => $_COOKIE['email']])[0];
+        if ($admin) {
+            AdministrateurModel::getInstance()->update($admin['id'], $data);
+        }
+        if ($joueur) {
+            JoueurModel::getInstance()->update($joueur['id'], $data);
+        }
+        if (isset($_COOKIE['token'])) {
+            unset($_COOKIE['token']);
+            setcookie('token', null, time()-1);
+        }
+        if (isset($_COOKIE['email'])) {
+            unset($_COOKIE['email']);
+            setcookie('email', null, time()-1);
+        }
+        HTTP::redirect('/login');
     }
 
     public static function loginPage(string $error = null) {
