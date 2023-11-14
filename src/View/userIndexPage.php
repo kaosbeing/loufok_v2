@@ -14,12 +14,20 @@ class userIndexPage
             Head::basehead();
             Head::title("Loufok | ");
             Head::scriptArray([]);
-            Head::cssArray(["admin"]);
+            Head::css("index_joueur");
             ?>
         </head>
 
         <body>
-            
+            <?php Utils::header("user"); ?>
+            <main>
+                <h1>Mon Espace</h1>
+                <?php
+                if ($datas["currentLoufokerie"])
+                {
+                }
+                ?>
+            </main>
         </body>
 
         </html>
