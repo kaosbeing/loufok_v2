@@ -14,7 +14,7 @@ class adminIndexPage
             Head::basehead();
             Head::title("Loufok | Administrateur");
             Head::scriptArray([]);
-            Head::cssArray(["admin"]);
+            Head::cssArray(["index_admin"]);
             ?>
         </head>
 

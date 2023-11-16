@@ -14,7 +14,7 @@ class adminNouveauPage
             Head::basehead();
             Head::title("Loufok | Administrateur");
             Head::scriptArray(["date-handler", "textarea-handler"]);
-            Head::cssArray(["admin"]);
+            Head::cssArray(["nouveau"]);
             ?>
         </head>
 
