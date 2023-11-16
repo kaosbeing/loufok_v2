@@ -38,8 +38,8 @@ foreach ($routes as $r)
             }
         }
 
-        // Si la route contient le mot "admin", on vérifie les droits
-        // ! Ce code empêche uniquement  les non-admin d'accéder aux routes admin, pas l'inverse
+        // Si la route contient le mot "mon-espace", on vérifie les droits
+        // ! Ce code empêche les non-connectés d'accéder aux routes privées
         if (in_array("mon-espace", explode($route, "/")))
         {
             if (isset($_COOKIE['email']) && isset($_COOKIE['token']))
