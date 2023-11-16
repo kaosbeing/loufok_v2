@@ -17,9 +17,9 @@
   display: none !important;
 }
 
-.title--big {
+.main__title {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 800;
   font-variant: small-caps;
   color: var(--primary);
   text-decoration-line: overline underline;
@@ -80,64 +80,59 @@
   outline: 1px solid var(--primary-use);
 }
 
-.contributions {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 10%;
-  align-self: stretch;
-  gap: 1rem;
-}
-
-.contribution {
-  width: 100%;
-  border-radius: 85% 15% 85% 15% / 15% 85% 15% 85%;
-  background-color: var(--primary);
-  color: white;
-  padding: 10%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.contribution--unknown {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  padding: 1rem;
-}
-
-.loufokeries {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  padding: 0 10%;
-  width: 100%;
-}
-
 .loufokerie {
+  color: #fff;
+  background-color: var(--primary);
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 70%;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  padding: 10%;
+  padding: 1rem;
   width: 100%;
 }
 
-.loufokerie__img {
-  height: 48px;
+.loufokerie__title {
+  font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
 }
 
-.loufokerie__info {
+.loufokerie__infos {
   display: flex;
   align-self: stretch;
   align-items: center;
   justify-content: space-between;
+}
+
+.loufokerie__dates {}
+
+.loufokerie__contributions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.loufokerie__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.loufokerie__joinContrib {
+  padding: 0.75rem;
+  background-color: #fff;
+  color: var(--primary);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  /* Ok this is useless on phone but it stresses me out */
+  cursor: pointer;
 }
 
 .switch {

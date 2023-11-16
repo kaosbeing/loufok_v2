@@ -1,4 +1,13 @@
 @import url(./main.css);
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 main {
   display: flex;
   align-items: center;
@@ -7,35 +16,45 @@ main {
   height: 100vh;
 }
 
-.password-wrapper {
+.password__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
 }
+
 .password {
   width: 100%;
   font-family: Arial, Helvetica, sans-serif;
 }
-.form-checkbox {
+
+.form__checkbox {
   display: block;
   cursor: pointer;
 }
+
 .eye {
   color: var(--primary);
   height: 24px;
   width: 24px;
 }
 
-.form-toggle {
+.form__toggle {
   display: none;
 }
-.form-toggle ~ .eye--visible {
+
+.form__toggle~.eye--visible {
   display: none;
 }
-.form-toggle:checked ~ .eye--visible {
+
+.form__toggle:checked~.eye--visible {
   display: inline-block;
 }
-.form-toggle:checked ~ .eye--hide {
+
+.form__toggle:checked~.eye--hide {
   display: none;
+}
+
+.errors {
+  color: red;
 }

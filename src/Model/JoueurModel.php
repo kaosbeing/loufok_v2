@@ -3,20 +3,21 @@
 
 class JoueurModel extends Model
 {
-    protected $tableName = APP_TABLE_PREFIX.'joueur';
-    protected $tableNameContribution= APP_TABLE_PREFIX.'contribution';
+    protected $tableName = APP_TABLE_PREFIX . 'joueur';
+    protected $tableNameContribution = APP_TABLE_PREFIX . 'contribution';
     protected static $instance;
 
 
 
     public static function getInstance()
     {
-        if (!isset(self::$instance)) {
+        if (!isset(self::$instance))
+        {
             self::$instance = new self();
         }
 
         return self::$instance;
-    }    
+    }
 
 
     public function findOrdered(int $id): ?array
@@ -27,7 +28,8 @@ class JoueurModel extends Model
         WHERE c.id_loufokerie = :id
         ORDER BY j.nom_plume ASC";
         $sth = $this->query($sql, [':id' => $id]);
-        if ($sth && $sth->rowCount()) {
+        if ($sth && $sth->rowCount())
+        {
             return $sth->fetchAll();
         }
 

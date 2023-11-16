@@ -14,12 +14,15 @@ class adminIndexPage
             Head::basehead();
             Head::title("Loufok | Administrateur");
             Head::scriptArray([]);
-            Head::cssArray(["admin"]);
+            Head::cssArray(["index_admin"]);
             ?>
         </head>
 
         <body>
-            
+            <?php Utils::header('admin', false) ?>
+            <main>
+                <a href="/admin/nouveau" class="button">Créer un nouveau cadavre</a>
+            </main>
         </body>
 
         </html>

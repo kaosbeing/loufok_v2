@@ -2,14 +2,31 @@
 
 class ErrorController
 {
+    /* Returns the view for page 404 */
     public static function page404($route)
     {
-        $user_type = Utils::userType($_COOKIE['token']);
+        if (isset($_COOKIE['token']))
+        {
+            $user_type = Utils::userType($_COOKIE['token']);
+        }
+        else
+        {
+            $user_type = "";
+        }
         Page404::render(["route" => $route, "user_type" => $user_type]);
     }
 
-    public static function page403()
+    /* Returns the view for page 403 */
+    public static function page403($route)
     {
-        Page403::render();
+        if (isset($_COOKIE['token']))
+        {
+            $user_type = Utils::userType($_COOKIE['token']);
+        }
+        else
+        {
+            $user_type = "";
+        }
+        Page403::render(["route" => $route, "user_type" => $user_type]);
     }
 }
