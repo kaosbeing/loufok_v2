@@ -13,7 +13,8 @@ class AdminController
     }
     public static function NewLoufokerie()
     {
-        if(AdminController::IsPeriodAvailable($_POST['date-debut'], $_POST['date-fin'])){
+        $periode_available = AdminController::IsPeriodAvailable($_POST['date-debut'], $_POST['date-fin']);
+        if($periode_available[0]){
             $user = AdministrateurModel::getInstance()->findBy(['ad_mail_administrateur' => $_COOKIE['email']])[0];
             $cadavre = LoufokerieModel::getInstance()->create([
                 'id_administrateur' => $user['id'],
@@ -31,14 +32,16 @@ class AdminController
             ]);
             HTTP::redirect('/admin');
         }
-        $error = "Période invalide";
+        $error = `Loufokerie déjà prévue du {$periode_available[1]} au {$periode_available[2]}.`;
         adminNouveauPage::render([$error]);
        
         
     }
-    public static function IsPeriodAvailable($debut, $fin): ?bool
+    public static function IsPeriodAvailable($debut, $fin): ?array
     {
         $valid_date = true;
+        $date_debut = null;
+        $date_fin = null;
         $loufokeries = LoufokerieModel::getInstance()->findFuture();
         foreach ($loufokeries as $loufokerie) {
             if($debut >= $loufokerie['date_debut_cadavre'] && $debut <= $loufokerie['date_fin_cadavre']){
@@ -48,6 +51,6 @@ class AdminController
                 $valid_date = false;
             }
         }
-        return $valid_date;
+        return [$valid_date, $date_debut, $date_fin];
     }
 }

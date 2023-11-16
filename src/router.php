@@ -16,9 +16,9 @@ foreach ($routes as $r)
     {
 
         // Si y'a pas de token, redirect automatiquement sur le login
-        if (!isset($_COOKIE['token']))
+        if (!isset($_COOKIE['token']) && ($route != "/" && $route != "/login"))
         {
-            AuthController::loginPage();
+            HTTP::redirect("/login");
             exit;
         }
 
