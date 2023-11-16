@@ -58,7 +58,9 @@ class userIndexPage
                         </div>
                     </div>
                 <?php
-                }
+                } else{?>
+                <p>Aucune loufokerie en cours</p>
+                <?php }
                 if ($datas["oldLoufokerie"])
                 {
                     $loufokerie = $datas["oldLoufokerie"];
@@ -83,8 +85,9 @@ class userIndexPage
                         </div>
                     </div>
                 <?php
-                }
-                ?>
+                } else {?>
+                <p>Vous n'avez participer à aucune loufokerie</p>
+                <?php }?>
             </main>
         </body>
 

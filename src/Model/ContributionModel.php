@@ -36,7 +36,7 @@ class ContributionModel extends Model
         $emptied = [];
         $contributions = ContributionModel::getInstance()->findByOrdered(['id_loufokerie' => $id_loufokerie]);
         $random = RandomModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie])[0];
-        $joueur_contribution = ContributionModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie])[0];
+        $joueur_contribution = ContributionModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie]) ? ContributionModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie])[0] : null;
         foreach ($contributions as $contribution)
         {
             if ($contribution['id'] == $random['id_contribution'])

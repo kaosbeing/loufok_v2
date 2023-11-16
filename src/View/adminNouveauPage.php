@@ -44,11 +44,10 @@ class adminNouveauPage
                     <input type='submit' class="button" value="Créer">
                 </form>
                 <?php if (isset($datas['errors'])) :
-                    foreach ($datas['errors'] as $error) {
                     ?>
-                        <span class="errors"><?php echo $error; ?></span>
+                        <span class="errors"><?php echo $datas['errors'][0]; ?></span>
                     <?php
-                    }endif;
+                    endif;
                     ?>
             </main>
         </body>

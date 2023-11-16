@@ -15,16 +15,16 @@ class AdminController
     {
         $errors = [];
         $periode_available = AdminController::IsPeriodAvailable($_POST['date-debut'], $_POST['date-fin']);
+        if(!AdminController::IsPeriodLogic($_POST['date-debut'], $_POST['date-fin'])){
+            $errors[] = `La date est érroné. La période débute après sa fin.`;
+        }
         if(!$periode_available[0]){
            
-            $errors[] = `Loufokerie déjà prévue du {$periode_available[1]} au {$periode_available[2]}.`;
+            $errors[] = `Une Loufokerie est déjà prévue du {$periode_available[1]} au {$periode_available[2]}.`;
         }
         if(!AdminController::IsTitreAvailable($_POST['titre'])){
           
             $errors[] = `Ce titre est déjà utilisé.`;
-        }
-        if(!AdminController::IsPeriodLogic($_POST['date-debut'], $_POST['date-fin'])){
-            $errors[] = `La date est érroné. La période débute après la fin.`;
         }
         if(empty($errors)){
           
