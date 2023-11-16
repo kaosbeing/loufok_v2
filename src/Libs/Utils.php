@@ -18,12 +18,25 @@ class Utils
 <?php
     }
 
+    /**
+     * Renvoie "user", "admin" ou null en fonction du type d'utilisateur connecté, selon son token
+     */
     public static function userType($token): string
     {
         $user_type = false;
 
         $search = JoueurModel::getInstance()->findBy(["token" => $_COOKIE['token']]);
-        var_dump($search);
+        if (!$search) {
+            $search = AdministrateurModel::getInstance()->findBy(["token" => $_COOKIE['token']]);
+
+            if (!$search) {
+                $user_type = null;
+            } else {
+                $user_type = "admin";
+            }
+        } else {
+            $user_type = "user";
+        }
         return $user_type;
     }
 }
