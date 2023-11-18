@@ -1,8 +1,10 @@
 <?php
 
-class LoginPage {
+class LoginPage
+{
 
-    public static function render(array $datas = []) {
+    public static function render(array $datas = [])
+    {
 ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -11,7 +13,7 @@ class LoginPage {
             <?php
             Head::basehead();
             Head::title("Loufok | Connexion");
-            Head::scriptArray(["checkbox-eye"]);
+            Head::scriptArray(["checkbox-eye", "pwahandler"]);
             Head::cssArray(["login"]);
             ?>
         </head>
@@ -49,7 +51,7 @@ class LoginPage {
                 </div>
                 <input class="button" type="submit" value="Se connecter">
             </form>
-
+            <button id="pwainstall" class="button" hidden>Ajouter à l'écran d'accueil</button>
         </body>
 
         </html>

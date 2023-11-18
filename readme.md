@@ -18,16 +18,17 @@ Todolist :
 - [ ] Projet : manifest JSON
 - [ ] Projet : cache CSS
 
-- [ ] Contrôleur : User
-- [ ] Contrôleur : Admin
-- [ ] Contrôleur : Auth
-- [ ] Contrôleur : Errors (pour les 404, 403, etc)
+- [x] Contrôleur : User
+- [x] Contrôleur : Admin
+- [x] Contrôleur : Auth
+- [x] Contrôleur : Errors (pour les 404, 403, etc)
 - [ ] Contrôleur : API (pour daylire)
 
 - [ ] Admin : Nouvelle loufokerie
-- [ ] User : rejoindre loufokerie
+- [x] User : rejoindre loufokerie
 - [ ] User : Contribuer
 - [ ] User : Consulter dernier loufokerie (juste le dernier auquel il a participé)
+- [ ] User : if !loufok afficher "pas de loufok"
 - [ ] API
 - [ ] API : Dispatcher
 
