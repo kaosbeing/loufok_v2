@@ -43,7 +43,7 @@ class ContributionModel extends Model
             {
                 array_push($emptied, $contribution['texte']);
             }
-            else if ($contribution['id'] == $joueur_contribution['id'])
+            else if (isset($joueur_contribution['id']) && $contribution['id'] == $joueur_contribution['id'])
             {
                 array_push($emptied, $contribution['texte']);
             }
