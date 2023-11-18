@@ -41,3 +41,26 @@ main {
 .contribution__questionmark {
   max-height: 2rem;
 }
+
+.form {
+  padding: 0;
+}
+
+.form__textWrapper {
+  width: 100%;
+  position: relative;
+}
+
+.form__textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--primary);
+  padding: 1rem;
+  padding-right: 2rem;
+}
+
+.form__textarea:focus-within {
+  outline: 1px solid var(--primary-use);
+}
+
+.form__submit {}

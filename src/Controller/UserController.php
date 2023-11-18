@@ -38,30 +38,47 @@ class UserController
         userLoufokeriePage::render([
             "loufokerie" => $loufokerie,
             "contributionArray" => $contributionArray,
-            "contributed" => UserController::asContributedTo($loufokerie),
+            "contributed" => UserController::hasContributedTo($loufokerie),
         ]);
     }
-    public static function userSubmission(){
+    public static function userSubmission()
+    {
         $today = date_create(date('y-m-d'));
         $loufokerie = LoufokerieModel::getInstance()->findCurrent();
         $user = JoueurModel::getInstance()->findBy(['ad_mail_joueur' => $_COOKIE['email']])[0];
         $contributions = ContributionModel::getInstance()->findByOrdered(['id_loufokerie' => $loufokerie['id']]);
         $contributionArray = ContributionModel::getInstance()->getArrayFullOfEmptyStringsExceptRandomAndOwnSubmission($user["id"], $loufokerie["id"]);
-        
+
         $errors = [];
-        if(date_create($loufokerie['date_debut_loufokerie']) > $today){
-            $errors[] = `C'est encore trop tôt ! Attendez le début de la Loufokerie`;
+        if (strlen($_POST['texte']) > 280)
+        {
+            $errors[] = "Votre contribution est trop longue !";
         }
-        if(UserController::asContributedTo($loufokerie)){
-            $errors[] = `Vous avez déjà contribué !`;
+        if (strlen($_POST['texte']) < 50)
+        {
+            $errors[] = "Votre contribution est trop courte !";
+            var_dump($errors);
         }
-        if(date_create($loufokerie['date_fin_loufokerie']) < $today){
-            $errors[] = `Trop tard ! La Loufokerie est finit...`;
+        if (date_create($loufokerie['date_debut_loufokerie']) > $today)
+        {
+            $errors[] = "C'est encore trop tôt ! Attendez le début de la Loufokerie";
         }
-        if(count($contributions) >= $loufokerie['nb_contributions']){
-            $errors[] = `Trop tard... Les autres ont déjà complété la loufokerie !`;
+        if (UserController::hasContributedTo($loufokerie))
+        {
+            echo "AOFGUR80FZAIAF";
+            $errors[] = "Vous avez déjà contribué !";
         }
-        if (empty($errors)) {
+        if (date_create($loufokerie['date_fin_loufokerie']) < $today)
+        {
+            $errors[] = "Trop tard ! La Loufokerie est finit...";
+        }
+        if (count($contributions) >= $loufokerie['nb_contributions'])
+        {
+            $errors[] = "Trop tard... Les autres ont déjà complété la loufokerie !";
+        }
+
+        if (empty($errors))
+        {
             ContributionModel::getInstance()->create([
                 'id_joueur' => $user['id'],
                 'texte' => $_POST['texte'],
@@ -70,11 +87,15 @@ class UserController
                 'date_soumission' => date('y-m-d'),
             ]);
         }
-        userLoufokeriePage::render([
+
+        $datas = [
             "loufokerie" => $loufokerie,
             "contributionArray" => $contributionArray,
-            "contributed" => UserController::asContributedTo($loufokerie),
-        ]);
+            "contributed" => UserController::hasContributedTo($loufokerie),
+            "errors" => $errors
+        ];
+
+        userLoufokeriePage::render($datas);
     }
 
     public static function userHistoriquePage()
@@ -82,10 +103,10 @@ class UserController
         userHistoriquePage::render();
     }
 
-    public static function asContributedTo($loufokerie): ?bool
+    public static function hasContributedTo($loufokerie): ?bool
     {
         $user = JoueurModel::getInstance()->findBy(['ad_mail_joueur' => $_COOKIE['email']])[0];
-        return ContributionModel::getInstance()->findBy(['id_joueur' => $user['id'], 'id_loufokerie' => $loufokerie['id']])? true : false;
-
+        $hasContributed = ContributionModel::getInstance()->findBy(['id_joueur' => $user['id'], 'id_loufokerie' => $loufokerie['id']]) ? true : false;
+        return $hasContributed;
     }
 }
