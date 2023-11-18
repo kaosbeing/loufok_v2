@@ -30,7 +30,10 @@ class userIndexPage
                     $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd M Y');
                 ?>
                     <div class="loufokerie">
-                        <h3 class="loufokerie__title"><?php echo $loufokerie["titre_loufokerie"] ?></h3>
+                        <div>
+                            <h4 class="loufokerie__pretitle">Ancienne Loufokerie</h4>
+                            <h3 class="loufokerie__title"><?php echo $loufokerie["titre_loufokerie"] ?></h3>
+                        </div>
                         <div class="loufokerie__infos">
                             <p class="loufokerie__dates"><?php echo $date_debut ?> - <?php echo $date_fin ?></p>
                             <p class="loufokerie__contributions"><?php echo $datas['nb_contribution'] ?> / <?php echo $loufokerie['nb_contributions'] ?><img src="<?php echo APP_ROOT_URL_COMPLETE . "/assets/medias/images/contributions.svg" ?>" alt="contributions"></p>
@@ -58,8 +61,10 @@ class userIndexPage
                         </div>
                     </div>
                 <?php
-                } else{?>
-                <p>Aucune loufokerie en cours</p>
+                }
+                else
+                { ?>
+                    <p>Aucune loufokerie en cours</p>
                 <?php }
                 if ($datas["oldLoufokerie"])
                 {
@@ -68,7 +73,10 @@ class userIndexPage
                     $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd M Y');
                 ?>
                     <div class="loufokerie">
-                        <h3 class="loufokerie__title"><?php echo $loufokerie["titre_loufokerie"] ?></h3>
+                        <div>
+                            <h4 class="loufokerie__pretitle">Ancienne Loufokerie</h4>
+                            <h3 class="loufokerie__title"><?php echo $loufokerie["titre_loufokerie"] ?></h3>
+                        </div>
                         <div class="loufokerie__infos">
                             <p class="loufokerie__dates"><?php echo $date_debut ?> - <?php echo $date_fin ?></p>
                             <p class="loufokerie__contributions"><?php echo $datas['nb_contribution'] ?> <img src="<?php echo APP_ROOT_URL_COMPLETE . "/assets/medias/images/contributions.svg" ?>" alt="contributions"></p>
@@ -79,15 +87,17 @@ class userIndexPage
                             ?>
                                 <p class="loufokerie__error"><?php echo $datas['error'] ?></p>
                             <?php
-                            endif;?>
-                                <p><?php echo $datas['old_contribution']['texte'] ?></p>
-                                <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace/historique" ?>" class="loufokerie__joinContrib">Voir la dernière Loufokerie</a>
+                            endif; ?>
+                            <p><?php echo $datas['old_contribution']['texte'] ?></p>
+                            <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace/historique" ?>" class="loufokerie__joinContrib">Voir la dernière Loufokerie</a>
                         </div>
                     </div>
                 <?php
-                } else {?>
-                <p>Vous n'avez participer à aucune loufokerie</p>
-                <?php }?>
+                }
+                else
+                { ?>
+                    <p>Vous n'avez participé à aucune autre loufokerie</p>
+                <?php } ?>
             </main>
         </body>
 
