@@ -16,9 +16,10 @@ foreach ($routes as $r)
     {
 
         // Si y'a pas de token, redirect automatiquement sur le login
-        if (!$_COOKIE['token'])
+        if (!isset($_COOKIE['token']) && ($route != "/" && $route != "/login"))
         {
-            HTTP::redirect('/login');
+            HTTP::redirect("/login");
+            exit;
         }
 
         // Si la route contient le mot "admin", on vérifie les droits
@@ -36,6 +37,23 @@ foreach ($routes as $r)
                 }
             }
         }
+
+        // Si la route contient le mot "mon-espace", on vérifie les droits
+        // ! Ce code empêche les non-connectés d'accéder aux routes privées
+        if (in_array("mon-espace", explode($route, "/")))
+        {
+            if (isset($_COOKIE['email']) && isset($_COOKIE['token']))
+            {
+                $user = JoueurModel::getInstance()->findBy(['ad_mail_joueur' => $_COOKIE['email']])[0];
+
+                if ($_COOKIE['token'] != $user['token'])
+                {
+                    ErrorController::page403($route);
+                    exit;
+                }
+            }
+        }
+
 
         // Récupère les paramètres spécifiés dans la route
         $params = explode('@', $r['script']);

@@ -14,12 +14,12 @@ class adminNouveauPage
             Head::basehead();
             Head::title("Loufok | Administrateur");
             Head::scriptArray(["date-handler", "textarea-handler"]);
-            Head::cssArray(["admin"]);
+            Head::cssArray(["nouveau"]);
             ?>
         </head>
 
         <body>
-            <?php Utils::header('admin', true) ?>
+            <?php Utils::header('admin', true);?>
             <main>
                 <form class="form" action="" method="POST" enctype="multipart/form-data">
                     <div class="form__element">
@@ -43,6 +43,12 @@ class adminNouveauPage
                     </div>
                     <input type='submit' class="button" value="Créer">
                 </form>
+                <?php if (isset($datas['errors'])) :
+                    ?>
+                        <span class="errors"><?php echo $datas['errors'][0]; ?></span>
+                    <?php
+                    endif;
+                    ?>
             </main>
         </body>
         </html>

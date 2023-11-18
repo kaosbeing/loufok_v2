@@ -51,12 +51,17 @@ class Utils {
     public static function userType(string $token): string {
         $user_type = false;
 
-        if ($token) {
-            $search = JoueurModel::getInstance()->findBy(["token" => $_COOKIE['token']]);
-            $search = $search ? $search : AdministrateurModel::getInstance()->findBy(["token" => $_COOKIE['token']]);
+        $search = JoueurModel::getInstance()->findBy(["token" => $_COOKIE['token']]);
+        if (!$search) {
+            $search = AdministrateurModel::getInstance()->findBy(["token" => $_COOKIE['token']]);
 
-
-            var_dump($search);
+            if (!$search) {
+                $user_type = null;
+            } else {
+                $user_type = "admin";
+            }
+        } else {
+            $user_type = "user";
         }
         return $user_type;
     }
