@@ -12,22 +12,22 @@ Todolist :
 
 -   [x] Projet : init BDD
 -   [x] Projet : init CSS
--   [ ] Projet : init Controller template
+-   [x] Projet : init Controller template
         ~~- [ ] Projet : init view template~~
 -   [ ] Projet : Contrôles sur la BDD
 -   [ ] Projet : manifest JSON
 -   [ ] Projet : cache CSS
 
--   [ ] Contrôleur : User
--   [ ] Contrôleur : Admin
--   [ ] Contrôleur : Auth
--   [ ] Contrôleur : Errors (pour les 404, 403, etc)
+-   [x] Contrôleur : User
+-   [x] Contrôleur : Admin
+-   [x] Contrôleur : Auth
+-   [x] Contrôleur : Errors (pour les 404, 403, etc)
 -   [ ] Contrôleur : API (pour daylire)
 
--   [ ] Admin : Nouvelle loufokerie
--   [ ] User : rejoindre loufokerie
--   [ ] User : Contribuer
--   [ ] User : Consulter dernier loufokerie (juste le dernier auquel il a participé)
+-   [x] Admin : Nouvelle loufokerie
+-   [x] User : rejoindre loufokerie
+-   [x] User : Contribuer
+-   [x] User : Consulter dernier loufokerie (juste le dernier auquel il a participé)
 -   [ ] API
 -   [ ] API : Dispatcher
 
