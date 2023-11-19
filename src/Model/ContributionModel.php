@@ -57,8 +57,8 @@ class ContributionModel extends Model
 
     public function getSubmissionNumber($id_loufok): ?int
     {
-        $sql = "SELECT COUNT(*) as nb_contrib FROM `{$this->tableName}` WHERE id_loufokerie = '$id_loufok'";
+        $sql = "SELECT COUNT(*) as nb_contrib FROM `{$this->tableName}` WHERE id_loufokerie = :id_loufokerie";
 
-        return $this->query($sql)->fetch() ? $this->query($sql)->fetch()["nb_contrib"] : null;
+        return $this->query($sql, [':id_loufokerie' => $id_loufok])->fetch() ? $this->query($sql, [':id_loufokerie' => $id_loufok])->fetch()["nb_contrib"] : null;
     }
 }

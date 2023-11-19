@@ -62,5 +62,3 @@ main {
 .form__textarea:focus-within {
   outline: 1px solid var(--primary-use);
 }
-
-.form__submit {}

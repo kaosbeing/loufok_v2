@@ -97,7 +97,23 @@ class UserController
 
     public static function userHistoriquePage()
     {
-        userHistoriquePage::render();
+        $user = JoueurModel::getInstance()->findBy(['ad_mail_joueur' => $_COOKIE['email']])[0];
+        $loufokerie = LoufokerieModel::getInstance()->findOld($user['id']);
+        $contributions = ContributionModel::getInstance()->findByOrdered(['id_loufokerie' => $loufokerie['id']]);
+        if ((date_create($loufokerie['date_debut_loufokerie']) <= date_create(date('y-m-d')) && date_create($loufokerie['date_fin_loufokerie']) >= date_create(date('y-m-d'))) && !(count($contributions) < $loufokerie['nb_contributions'])) {
+            HTTP::redirect('/mon-espace/loufokerie?id='.$loufokerie['id']);
+        }if (date_create($loufokerie['date_debut_loufokerie']) > date_create(date('y-m-d'))) {
+            HTTP::redirect('/403');
+        }
+        $duree = floor((date_timestamp_get(new DateTime($loufokerie['date_fin_loufokerie'])) - date_timestamp_get(new DateTime($loufokerie['date_debut_loufokerie']))) / 86400);
+        $joueurs = JoueurModel::getInstance()->findOrdered($loufokerie['id']);
+        $datas = [
+            "loufokerie" => $loufokerie,
+            "contributions" =>  $contributions,
+            "joueurs" => $joueurs,
+            "duree" => $duree,
+        ];
+        userHistoriquePage::render($datas);
     }
 
     public static function hasContributedTo($loufokerie): ?bool

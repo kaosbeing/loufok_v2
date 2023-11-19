@@ -38,6 +38,7 @@ class userIndexPage
                             <p class="loufokerie__dates"><?php echo $date_debut ?> - <?php echo $date_fin ?></p>
                             <p class="loufokerie__contributions"><?php echo $datas['nb_contribution'] ?> / <?php echo $loufokerie['nb_contributions'] ?><img src="<?php echo APP_ROOT_URL_COMPLETE . "/assets/medias/images/contributions.svg" ?>" alt="contributions"></p>
                         </div>
+                        <hr class="loufokerie__separator">
                         <div class="loufokerie__content">
                             <?php
                             if ($datas['error']) :
@@ -81,6 +82,7 @@ class userIndexPage
                             <p class="loufokerie__dates"><?php echo $date_debut ?> - <?php echo $date_fin ?></p>
                             <p class="loufokerie__contributions"><?php echo $datas['nb_contribution'] ?> <img src="<?php echo APP_ROOT_URL_COMPLETE . "/assets/medias/images/contributions.svg" ?>" alt="contributions"></p>
                         </div>
+                        <hr class="loufokerie__separator">
                         <div class="loufokerie__content">
                             <?php
                             if ($datas['error']) :

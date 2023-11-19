@@ -20,7 +20,6 @@
 .main__title {
   font-size: 2rem;
   font-weight: 800;
-  font-variant: small-caps;
   color: var(--primary);
   text-decoration-line: overline underline;
 }

@@ -24,8 +24,8 @@ class RandomModel extends Model
      */
     public function getRandomSubmission(int $id_user, int $id_loufokerie): ?array
     {
-        $sql = "SELECT id_contribution FROM `{$this->tableName}` WHERE id_joueur = '$id_user' AND id_loufokerie = '$id_loufokerie'";
-        $id_contrib = $this->query($sql)->fetch() ? $this->query($sql)->fetch()["id_contribution"] : null;
+        $sql = "SELECT id_contribution FROM `{$this->tableName}` WHERE id_joueur = '$id_user' AND id_loufokerie = :id_loufokerie";
+        $id_contrib = $this->query($sql, [':id_loufokerie' => $id_loufokerie])->fetch() ? $this->query($sql, [':id_loufokerie' => $id_loufokerie])->fetch()["id_contribution"] : null;
         $contrib = null;
         if ($id_contrib)
         {

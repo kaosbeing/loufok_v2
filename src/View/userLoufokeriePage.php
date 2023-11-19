@@ -12,7 +12,7 @@ class userLoufokeriePage
         <head>
             <?php
             Head::basehead();
-            Head::title("Loufok | ");
+            Head::title("Loufok | {$datas['loufokerie']['titre_loufokerie']}");
             Head::scriptArray(["textarea-handler"]);
             Head::css("loufokerie");
             ?>
