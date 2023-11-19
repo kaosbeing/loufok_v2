@@ -50,22 +50,12 @@ class UserController
         $contributionArray = ContributionModel::getInstance()->getArrayFullOfEmptyStringsExceptRandomAndOwnSubmission($user["id"], $loufokerie["id"]);
 
         $errors = [];
-        if (strlen($_POST['texte']) > 280)
-        {
-            $errors[] = "Votre contribution est trop longue !";
-        }
-        if (strlen($_POST['texte']) < 50)
-        {
-            $errors[] = "Votre contribution est trop courte !";
-            var_dump($errors);
-        }
         if (date_create($loufokerie['date_debut_loufokerie']) > $today)
         {
             $errors[] = "C'est encore trop tôt ! Attendez le début de la Loufokerie";
         }
         if (UserController::hasContributedTo($loufokerie))
         {
-            echo "AOFGUR80FZAIAF";
             $errors[] = "Vous avez déjà contribué !";
         }
         if (date_create($loufokerie['date_fin_loufokerie']) < $today)
@@ -76,7 +66,14 @@ class UserController
         {
             $errors[] = "Trop tard... Les autres ont déjà complété la loufokerie !";
         }
-
+        if (strlen($_POST['texte']) > 280)
+        {
+            $errors[] = "Votre contribution est trop longue !";
+        }
+        if (strlen($_POST['texte']) < 50)
+        {
+            $errors[] = "Votre contribution est trop courte !";
+        }
         if (empty($errors))
         {
             ContributionModel::getInstance()->create([

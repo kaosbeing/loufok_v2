@@ -26,6 +26,10 @@ class AdminController
           
             $errors[] = `Ce titre est déjà utilisé.`;
         }
+        if($_POST['nb_contributions'] < 2){
+          
+            $errors[] = `Il y a trop peu de contributions.`;
+        }
         if(empty($errors)){
           
             $user = AdministrateurModel::getInstance()->findBy(['ad_mail_administrateur' => $_COOKIE['email']])[0];

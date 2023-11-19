@@ -26,12 +26,12 @@ class userIndexPage
                 if ($datas["currentLoufokerie"])
                 {
                     $loufokerie = $datas["currentLoufokerie"];
-                    $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd M Y');
-                    $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd M Y');
+                    $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd/m/y');
+                    $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd/m/y');
                 ?>
                     <div class="loufokerie">
                         <div>
-                            <h4 class="loufokerie__pretitle">Ancienne Loufokerie</h4>
+                            <h4 class="loufokerie__pretitle">Loufokerie en cours</h4>
                             <h3 class="loufokerie__title"><?php echo $loufokerie["titre_loufokerie"] ?></h3>
                         </div>
                         <div class="loufokerie__infos">
@@ -69,8 +69,8 @@ class userIndexPage
                 if ($datas["oldLoufokerie"])
                 {
                     $loufokerie = $datas["oldLoufokerie"];
-                    $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd M Y');
-                    $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd M Y');
+                    $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd/m/y');
+                    $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd/m/y');
                 ?>
                     <div class="loufokerie">
                         <div>
