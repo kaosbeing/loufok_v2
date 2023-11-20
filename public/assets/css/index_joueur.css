@@ -73,3 +73,17 @@ main {
   /* *Agreed */
   cursor: pointer;
 }
+.switch-button {
+  color: grey;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+.switch-button:hover {
+  font-weight: 600;
+}
+.switch-button.activated {
+  color: var(--primary);
+  font-weight: 600;
+}

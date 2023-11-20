@@ -16,22 +16,21 @@ class AdminController
         $errors = [];
         $periode_available = AdminController::IsPeriodAvailable($_POST['date-debut'], $_POST['date-fin']);
         if(!AdminController::IsPeriodLogic($_POST['date-debut'], $_POST['date-fin'])){
-            $errors[] = `La date est érroné. La période débute après sa fin.`;
+            $errors[] = 'La date est érroné. La période débute après sa fin.';
         }
         if(!$periode_available[0]){
            
-            $errors[] = `Une Loufokerie est déjà prévue du {$periode_available[1]} au {$periode_available[2]}.`;
+            $errors[] = 'Une Loufokerie est déjà prévue du {$periode_available[1]} au {$periode_available[2]}.';
         }
         if(!AdminController::IsTitreAvailable($_POST['titre'])){
           
-            $errors[] = `Ce titre est déjà utilisé.`;
+            $errors[] = 'Ce titre est déjà utilisé.';
         }
         if($_POST['nb_contributions'] < 2){
           
-            $errors[] = `Il y a trop peu de contributions.`;
+            $errors[] = 'Il y a trop peu de contributions.';
         }
         if(empty($errors)){
-          
             $user = AdministrateurModel::getInstance()->findBy(['ad_mail_administrateur' => $_COOKIE['email']])[0];
             $loufokerie = LoufokerieModel::getInstance()->create([
                 'id_administrateur' => $user['id'],
@@ -49,8 +48,10 @@ class AdminController
             ]);
             HTTP::redirect('/admin');
         }
-      
-        adminNouveauPage::render([$errors]);
+        $datas = [
+            'errors' => $errors
+        ];
+        adminNouveauPage::render([$datas]);
     }
     public static function IsPeriodAvailable($debut, $fin): ?array
     {
@@ -69,10 +70,11 @@ class AdminController
             }
         }
         return [$valid_date, $date_debut, $date_fin];
-    }public static function IsPeriodLogic($debut, $fin): ?bool
+    }
+    public static function IsPeriodLogic($debut, $fin): ?bool
     {
         $valid_date = true;
-        if($debut < $fin){
+        if($debut > $fin){
             $valid_date = false;
         }
         return $valid_date;
