@@ -11,8 +11,8 @@ class LoginPage {
             <?php
             Head::basehead();
             Head::title("Loufok | Connexion");
+            Head::css("login");
             Head::scriptArray(["checkbox-eye"]);
-            Head::cssArray(["login"]);
             ?>
         </head>
 

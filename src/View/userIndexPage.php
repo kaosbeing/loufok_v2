@@ -13,8 +13,8 @@ class userIndexPage
             <?php
             Head::basehead();
             Head::title("Loufok | {$datas['user']['nom_plume']}");
-            Head::scriptArray(['switch']);
             Head::css("index_joueur");
+            Head::scriptArray(['switch']);
             ?>
         </head>
 

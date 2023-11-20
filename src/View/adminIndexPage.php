@@ -13,8 +13,8 @@ class adminIndexPage
             <?php
             Head::basehead();
             Head::title("Loufok | Administrateur");
+            Head::css("index_admin");
             Head::scriptArray([]);
-            Head::cssArray(["index_admin"]);
             ?>
         </head>
 

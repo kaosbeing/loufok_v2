@@ -13,8 +13,8 @@ class adminNouveauPage
             <?php
             Head::basehead();
             Head::title("Loufok | Administrateur");
+            Head::css("nouveau");
             Head::scriptArray(["date-handler", "textarea-handler"]);
-            Head::cssArray(["nouveau"]);
             ?>
         </head>
 
