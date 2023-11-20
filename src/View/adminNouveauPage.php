@@ -32,7 +32,6 @@ class adminNouveauPage
                             <label for="date-fin">Fin</label>
                             <input class='date-fin input--custom-style' type="date" name="date-fin" required>
                     </div>
-                        
                     <div class="form__element">
                             <label for="nb_contributions">Nombre de contributions</label>
                             <input class='input--custom-style' type="number" min='2' name="nb_contributions" required>
