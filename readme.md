@@ -15,7 +15,7 @@ Todolist :
 - [ ] Projet : init Controller template
 ~~- [ ] Projet : init view template~~
 - [ ] Projet : Contrôles sur la BDD
-- [ ] Projet : manifest JSON
+- [x] Projet : manifest JSON
 - [ ] Projet : cache CSS
 
 - [x] Contrôleur : User
@@ -31,6 +31,8 @@ Todolist :
 - [ ] User : if !loufok afficher "pas de loufok"
 - [ ] API
 - [ ] API : Dispatcher
+- [ ] User : Brouillon de contribution
+- [ ] Projet : Accessibilité (un ou deux trucs, pas absolument tout) 
 
 OPTIONNEL
 
