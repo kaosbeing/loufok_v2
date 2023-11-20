@@ -10,6 +10,7 @@ class UserController
         $random_contribution = $currentLoufokerie ? RandomModel::getInstance()->getRandomSubmission($user["id"], $currentLoufokerie['id']) : null;
         $oldLoufokerie = LoufokerieModel::getInstance()->findOld($user['id']);
         $old_contribution = $oldLoufokerie ? ContributionModel::getInstance()->findBy(['id_joueur' => $user['id'], 'id_loufokerie' => $oldLoufokerie['id']])[0] : null;
+        $nb_old_contributions = count(ContributionModel::getInstance()->findBy(['id_loufokerie' => $oldLoufokerie['id']]));
 
         userIndexPage::render([
             "error" => $error,
@@ -18,6 +19,7 @@ class UserController
             "random_contribution" => $random_contribution,
             "oldLoufokerie" => $oldLoufokerie,
             "old_contribution" => $old_contribution,
+            "nb_old_contributions" => $nb_old_contributions,
             "user" => $user,
         ]);
     }
