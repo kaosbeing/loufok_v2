@@ -15,22 +15,22 @@ class AdminController
     {
         $errors = [];
         $periode_available = AdminController::IsPeriodAvailable($_POST['date-debut'], $_POST['date-fin']);
-        if(!AdminController::IsPeriodLogic($_POST['date-debut'], $_POST['date-fin'])){
-            $errors[] = 'La date est érroné. La période débute après sa fin.';
+        if (!AdminController::IsPeriodLogic($_POST['date-debut'], $_POST['date-fin'])) {
+            $errors[] = "La date est érroné. La période débute après sa fin.";
         }
-        if(!$periode_available[0]){
-           
-            $errors[] = 'Une Loufokerie est déjà prévue du {$periode_available[1]} au {$periode_available[2]}.';
+        if (!$periode_available[0]) {
+
+            $errors[] = "Une Loufokerie est déjà prévue du {$periode_available[1]} au {$periode_available[2]}.";
         }
-        if(!AdminController::IsTitreAvailable($_POST['titre'])){
-          
-            $errors[] = 'Ce titre est déjà utilisé.';
+        if (!AdminController::IsTitreAvailable($_POST['titre'])) {
+
+            $errors[] = "Ce titre est déjà utilisé.";
         }
-        if($_POST['nb_contributions'] < 2){
-          
-            $errors[] = 'Il y a trop peu de contributions.';
+        if ($_POST['nb_contributions'] < 2) {
+
+            $errors[] = "Il y a trop peu de contributions.";
         }
-        if(empty($errors)){
+        if (empty($errors)) {
             $user = AdministrateurModel::getInstance()->findBy(['ad_mail_administrateur' => $_COOKIE['email']])[0];
             $loufokerie = LoufokerieModel::getInstance()->create([
                 'id_administrateur' => $user['id'],
@@ -59,12 +59,12 @@ class AdminController
         $date_debut = null;
         $date_fin = null;
         $loufokeries = LoufokerieModel::getInstance()->findFuture();
-        if(!empty($loufokeries)){
+        if (!empty($loufokeries)) {
             foreach ($loufokeries as $loufokerie) {
-                if($debut >= $loufokerie['date_debut_loufokerie'] && $debut <= $loufokerie['date_fin_loufokerie']){
+                if ($debut >= $loufokerie['date_debut_loufokerie'] && $debut <= $loufokerie['date_fin_loufokerie']) {
                     $valid_date = false;
                 }
-                if($fin >= $loufokerie['date_debut_loufokerie'] && $fin <= $loufokerie['date_fin_loufokerie']){
+                if ($fin >= $loufokerie['date_debut_loufokerie'] && $fin <= $loufokerie['date_fin_loufokerie']) {
                     $valid_date = false;
                 }
             }
@@ -74,7 +74,7 @@ class AdminController
     public static function IsPeriodLogic($debut, $fin): ?bool
     {
         $valid_date = true;
-        if($debut > $fin){
+        if ($debut > $fin) {
             $valid_date = false;
         }
         return $valid_date;
@@ -83,12 +83,11 @@ class AdminController
     {
         $valid_titre = true;
         $loufokeries = LoufokerieModel::getInstance()->findAll();
-        if(!empty($loufokeries)){
+        if (!empty($loufokeries)) {
             foreach ($loufokeries as $loufokerie) {
-                if($titre == $loufokerie['titre_loufokerie']){
+                if ($titre == $loufokerie['titre_loufokerie']) {
                     $valid_titre = false;
                 }
-              
             }
         }
         return $valid_titre;
