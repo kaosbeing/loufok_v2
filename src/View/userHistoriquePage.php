@@ -13,8 +13,8 @@ class userHistoriquePage
             <?php
             Head::basehead();
             Head::title("Loufok | {$datas['loufokerie']['titre_loufokerie']}");
+            Head::css("historique");
             Head::scriptArray([]);
-            Head::cssArray(["historique"]);
             ?>
         </head>
 

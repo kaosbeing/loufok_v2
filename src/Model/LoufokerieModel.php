@@ -32,7 +32,11 @@ class LoufokerieModel extends Model
 
         return null;
     }
-
+    /**
+     * Renvoie tout les cadavres prévus
+     * @return array Le cadavre
+     * @return null si aucun cadavre n'existe
+     */
     public function findFuture(): ?array
     {
         $today = date('y-m-d');
