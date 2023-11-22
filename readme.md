@@ -22,7 +22,6 @@ PHASE 1 :
 -   [x] Contrôleur : Admin
 -   [x] Contrôleur : Auth
 -   [x] Contrôleur : Errors (pour les 404, 403, etc)
--   [ ] Contrôleur : API (pour daylire)
 
 -   [x] Admin : Nouvelle loufokerie
 -   [x] User : rejoindre loufokerie
@@ -32,9 +31,11 @@ PHASE 1 :
 
 PHASE 2 :
 
+-   [ ] Contrôleur : API (pour daylire)
 -   [ ] API
 -   [x] API : Dispatcher
--   [ ] Projet : manifest JSON
+-   [ ] API : routes
+-   [x] Projet : manifest JSON
 -   [ ] Projet : cache CSS
 
 OPTIONNEL
