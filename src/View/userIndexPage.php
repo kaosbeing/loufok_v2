@@ -21,8 +21,8 @@ class userIndexPage {
             <main>
                 <h1 class="main__title">Mon Espace</h1>
                 <div class="switch">
-                    <div class="switch-button  activated">Active</div>
-                    <div class="switch-button">Dernière</div>
+                    <div tabindex="0" class="switch-button activated" aria-selected="true" aria-label="Loufokerie active">Active</div>
+                    <div tabindex="0" class="switch-button" aria-selected="false" aria-label="Dernière loufokerie">Dernière</div>
                 </div>
                 <div class="loufokerie current">
                     <?php
