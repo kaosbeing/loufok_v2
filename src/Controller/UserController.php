@@ -5,12 +5,14 @@ class UserController
     public static function userIndexPage(?string $error = null)
     {
         $user = JoueurModel::getInstance()->findBy(['ad_mail_joueur' => $_COOKIE['email']])[0];
+
         $currentLoufokerie = LoufokerieModel::getInstance()->findCurrent();
         $nb_contribution = $currentLoufokerie ? ContributionModel::getInstance()->getSubmissionNumber($currentLoufokerie['id']) : null;
         $random_contribution = $currentLoufokerie ? RandomModel::getInstance()->getRandomSubmission($user["id"], $currentLoufokerie['id']) : null;
+
         $oldLoufokerie = LoufokerieModel::getInstance()->findOld($user['id']);
         $old_contribution = $oldLoufokerie ? ContributionModel::getInstance()->findBy(['id_joueur' => $user['id'], 'id_loufokerie' => $oldLoufokerie['id']])[0] : null;
-        $nb_old_contributions = count(ContributionModel::getInstance()->findBy(['id_loufokerie' => $oldLoufokerie['id']]));
+        $nb_old_contributions = $oldLoufokerie ? count(ContributionModel::getInstance()->findBy(['id_loufokerie' => $oldLoufokerie['id']])) : null;
 
         userIndexPage::render([
             "error" => $error,
@@ -102,9 +104,12 @@ class UserController
         $user = JoueurModel::getInstance()->findBy(['ad_mail_joueur' => $_COOKIE['email']])[0];
         $loufokerie = LoufokerieModel::getInstance()->findOld($user['id']);
         $contributions = ContributionModel::getInstance()->findByOrdered(['id_loufokerie' => $loufokerie['id']]);
-        if ((date_create($loufokerie['date_debut_loufokerie']) <= date_create(date('y-m-d')) && date_create($loufokerie['date_fin_loufokerie']) >= date_create(date('y-m-d'))) && !(count($contributions) < $loufokerie['nb_contributions'])) {
-            HTTP::redirect('/mon-espace/loufokerie?id='.$loufokerie['id']);
-        }if (date_create($loufokerie['date_debut_loufokerie']) > date_create(date('y-m-d'))) {
+        if ((date_create($loufokerie['date_debut_loufokerie']) <= date_create(date('y-m-d')) && date_create($loufokerie['date_fin_loufokerie']) >= date_create(date('y-m-d'))) && !(count($contributions) < $loufokerie['nb_contributions']))
+        {
+            HTTP::redirect('/mon-espace/loufokerie?id=' . $loufokerie['id']);
+        }
+        if (date_create($loufokerie['date_debut_loufokerie']) > date_create(date('y-m-d')))
+        {
             HTTP::redirect('/403');
         }
         $duree = floor((date_timestamp_get(new DateTime($loufokerie['date_fin_loufokerie'])) - date_timestamp_get(new DateTime($loufokerie['date_debut_loufokerie']))) / 86400);
