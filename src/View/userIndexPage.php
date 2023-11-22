@@ -1,10 +1,8 @@
 <?php
 
-class userIndexPage
-{
+class userIndexPage {
 
-    public static function render(array $datas = [])
-    {
+    public static function render(array $datas = []) {
 ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -28,8 +26,7 @@ class userIndexPage
                 </div>
                 <div class="loufokerie current">
                     <?php
-                    if ($datas["currentLoufokerie"])
-                    {
+                    if ($datas["currentLoufokerie"]) {
                         $loufokerie = $datas["currentLoufokerie"];
                         $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd/m/y');
                         $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd/m/y');
@@ -65,20 +62,17 @@ class userIndexPage
                             ?>
                         </div>
                     <?php
-                    }
-                    else
-                    { ?>
+                    } else { ?>
                         <p>Aucune loufokerie en cours</p>
-                <?php } ?> 
-                    </div>
-                    <div class="loufokerie old d-none">
-                <?php
-                if ($datas["oldLoufokerie"])
-                {
-                    $loufokerie = $datas["oldLoufokerie"];
-                    $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd/m/y');
-                    $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd/m/y');
-                ?>
+                    <?php } ?>
+                </div>
+                <div class="loufokerie old d-none">
+                    <?php
+                    if ($datas["oldLoufokerie"]) {
+                        $loufokerie = $datas["oldLoufokerie"];
+                        $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd/m/y');
+                        $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd/m/y');
+                    ?>
                         <div>
                             <h4 class="loufokerie__pretitle">Ancienne Loufokerie</h4>
                             <h3 class="loufokerie__title"><?php echo $loufokerie["titre_loufokerie"] ?></h3>
@@ -99,9 +93,7 @@ class userIndexPage
                             <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace/historique" ?>" class="loufokerie__joinContrib">Voir la dernière Loufokerie</a>
                         </div>
                     <?php
-                    }
-                    else
-                    { ?>
+                    } else { ?>
                         <p>Vous n'avez participé à aucune autre loufokerie</p>
                     <?php } ?>
                 </div>
