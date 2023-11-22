@@ -50,5 +50,10 @@ $routes = [
         'route' => ['/mon-espace/historique'],
         'method' => 'GET',
         'script' => 'user@userHistoriquePage',
-    ]
+    ],
+    [
+        'route' => ['/api/loufok/{int:id}'],
+        'method' => 'GET',
+        'script' => 'user@userIndexPage',
+    ],
 ];
