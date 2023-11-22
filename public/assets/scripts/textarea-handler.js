@@ -13,8 +13,12 @@ lengthIndicator.style.transform = "translateY(-50%)";
 
 if (contrib != null) {
 	contrib.parentNode.appendChild(lengthIndicator); // Appends the string limit indicator to the textarea
+	// Both these function are called AFTER the draft is injected in textarea
+	// Autoresize is in settimeout because there was a bug where it was a not the right size on load
 	displayCharLimits()
-	autoResize()
+	setTimeout(() => {
+		autoResize()
+	}, 50);
 
 	contrib.addEventListener("input", () => {
 		nbCharac = contrib.value.length;
