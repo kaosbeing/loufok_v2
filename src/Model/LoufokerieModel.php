@@ -18,8 +18,8 @@ class LoufokerieModel extends Model
 
     /**
      * Renvoie le cadavre en cours
-     * @return array Le cadavre
-     * @return null si aucun cadavre n'existe
+     * @return array
+     * @return null 
      */
     public function findCurrent(): ?array
     {
@@ -34,8 +34,8 @@ class LoufokerieModel extends Model
     }
     /**
      * Renvoie tout les cadavres prévus
-     * @return array Le cadavre
-     * @return null si aucun cadavre n'existe
+     * @return array 
+     * @return null 
      */
     public function findFuture(): ?array
     {
@@ -52,10 +52,11 @@ class LoufokerieModel extends Model
 
     /**
      * Renvoie le dernier cadavre terminé
-     * @return array Le cadavre
-     * @return null si aucun cadavre n'existe
+     * @param int $userId id d'un joueur
+     * @return array
+     * @return null
      */
-    public function findOld($userId): ?array
+    public function findOld(int $userId): ?array
     {
         $today = date('y-m-d');
         $sql = "SELECT *

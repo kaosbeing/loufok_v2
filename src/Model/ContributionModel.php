@@ -15,7 +15,11 @@ class ContributionModel extends Model
         return self::$instance;
     }
 
-
+    /**
+     * Renvoit toute les contributions par ordre de soumission pour des critères précisés
+     * @param array $criterias le tableau des critères
+     * @return array
+     */
     public function findByOrdered(array $criterias): ?array
     {
         // décomposer le tableau des critères
@@ -31,6 +35,13 @@ class ContributionModel extends Model
         return $this->query($sql, $values)->fetchAll();
     }
 
+
+     /**
+     * Renvoit un array de remplit de strings vides sauf la contribution random et sa propre contribution
+     * @param int $id_joueur
+     * @param int $id_loufokerie
+     * @return array
+     */
     public function getArrayFullOfEmptyStringsExceptRandomAndOwnSubmission(int $id_joueur, int $id_loufokerie): ?array
     {
         $emptied = [];
@@ -55,7 +66,14 @@ class ContributionModel extends Model
         return $emptied;
     }
 
-    public function getSubmissionNumber($id_loufok): ?int
+
+    /**
+     * Renvoit un array de remplit de strings vides sauf la contribution random et sa propre contribution
+     * @param int $id_joueur
+     * @param int $id_loufokerie
+     * @return int
+     */
+    public function getSubmissionNumber(int $id_loufok): ?int
     {
         $sql = "SELECT COUNT(*) as nb_contrib FROM `{$this->tableName}` WHERE id_loufokerie = :id_loufokerie";
 

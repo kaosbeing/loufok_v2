@@ -130,6 +130,7 @@ INSERT INTO `loufokerie` (`id`, `titre_loufokerie`, `date_debut_loufokerie`, `da
 --
 -- Déclencheurs `loufokerie`
 --
+-- Dates --
 DELIMITER $$
 CREATE TRIGGER `before_insert_loufokerie` 
 BEFORE INSERT ON `loufokerie` FOR EACH ROW BEGIN
@@ -140,6 +141,7 @@ BEFORE INSERT ON `loufokerie` FOR EACH ROW BEGIN
 END
 $$
 DELIMITER ;
+-- Nb_contrib mini --
 DELIMITER $$
 CREATE TRIGGER `nb_contrib_mini` 
 BEFORE INSERT ON `loufokerie` FOR EACH ROW BEGIN
@@ -150,6 +152,40 @@ BEFORE INSERT ON `loufokerie` FOR EACH ROW BEGIN
 END
 $$
 DELIMITER ;
+-- Periodes --
+DELIMITER $$
+CREATE TRIGGER `before_insert_update_loufokerie`
+BEFORE INSERT ON `loufokerie`
+FOR EACH ROW
+BEGIN
+    DECLARE overlap_count INT;
+
+    -- Check if there is any overlapping loufokerie
+    SELECT COUNT(*)
+    INTO overlap_count
+    FROM `loufokerie`
+    WHERE NEW.date_debut_loufokerie <= date_fin_loufokerie
+      AND NEW.date_fin_loufokerie >= date_debut_loufokerie
+      AND id != NEW.id; -- Exclude the current loufokerie if updating
+    
+    -- Check if date_debut_loufokerie is not earlier than today's date
+    IF NEW.date_debut_loufokerie < CURDATE() THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: date_debut_loufokerie cannot be earlier than today';
+    END IF;
+
+    -- If there is an overlap, raise an error
+    IF overlap_count > 0 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Error: Overlapping date range with an existing loufokerie';
+    END IF;
+END;
+$$
+DELIMITER ;
+--
+-- Déclencheurs `contribution`
+--
+-- Lenght text --
 DELIMITER $$
 CREATE TRIGGER `before_insert_update_contribution`
 BEFORE INSERT ON `contribution`
@@ -162,6 +198,7 @@ BEGIN
 END;
 $$
 DELIMITER ;
+-- nb contrib > max --
 DELIMITER $$
 CREATE TRIGGER `before_insert_update_contribution`
 BEFORE INSERT ON `contribution`
@@ -186,24 +223,23 @@ BEGIN
 END;$$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `before_insert_update_loufokerie`
-BEFORE INSERT ON `loufokerie`
+CREATE TRIGGER before_insert_update_contribution
+BEFORE INSERT ON `contribution`
 FOR EACH ROW
 BEGIN
-    DECLARE overlap_count INT;
+    DECLARE loufokerie_start_date DATE;
+    DECLARE loufokerie_end_date DATE;
 
-    -- Check if there is any overlapping loufokerie
-    SELECT COUNT(*)
-    INTO overlap_count
+    -- Get the start and end dates of the associated loufokerie
+    SELECT date_debut_loufokerie, date_fin_loufokerie
+    INTO loufokerie_start_date, loufokerie_end_date
     FROM `loufokerie`
-    WHERE NEW.date_debut_loufokerie <= date_fin_loufokerie
-      AND NEW.date_fin_loufokerie >= date_debut_loufokerie
-      AND id != NEW.id; -- Exclude the current loufokerie if updating
+    WHERE id = NEW.id_loufokerie;
 
-    -- If there is an overlap, raise an error
-    IF overlap_count > 0 THEN
+    -- Check if the contribution date is within the valid period
+    IF NEW.date_soumission < loufokerie_start_date OR NEW.date_soumission > loufokerie_end_date THEN
         SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'Error: Overlapping date range with an existing loufokerie';
+        SET MESSAGE_TEXT = 'Error: Contribution date must be within the loufokerie period';
     END IF;
 END;
 $$

@@ -18,8 +18,12 @@ class JoueurModel extends Model
 
         return self::$instance;
     }
-
-
+   /**
+     * Renvoie tout les joueurs par ordre alphabétique ayant participé a une loufokerie
+     * @param int $id id de la loufokerie
+     * @return array 
+     * @return null
+     */
     public function findOrdered(int $id): ?array
     {
         $sql = "SELECT *
