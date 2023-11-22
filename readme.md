@@ -37,6 +37,7 @@ PHASE 2 :
 -   [ ] API : routes
 -   [x] Projet : manifest JSON
 -   [ ] Projet : cache CSS
+-   [ ] Projet : notifications
 
 OPTIONNEL
 
