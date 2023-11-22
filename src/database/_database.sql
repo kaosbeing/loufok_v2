@@ -132,7 +132,7 @@ INSERT INTO `loufokerie` (`id`, `titre_loufokerie`, `date_debut_loufokerie`, `da
 --
 -- Dates --
 DELIMITER $$
-CREATE TRIGGER `before_insert_loufokerie` 
+CREATE TRIGGER `loufokerie_dates_order` 
 BEFORE INSERT ON `loufokerie` FOR EACH ROW BEGIN
     IF NEW.date_debut_loufokerie >= NEW.date_fin_loufokerie THEN
         SIGNAL SQLSTATE '45000'
@@ -143,7 +143,7 @@ $$
 DELIMITER ;
 -- Nb_contrib mini --
 DELIMITER $$
-CREATE TRIGGER `nb_contrib_mini` 
+CREATE TRIGGER `loufokerie_nb_contrib` 
 BEFORE INSERT ON `loufokerie` FOR EACH ROW BEGIN
     IF NEW.nb_contributions < 1 THEN
         SIGNAL SQLSTATE '45000'
@@ -154,7 +154,7 @@ $$
 DELIMITER ;
 -- Periodes --
 DELIMITER $$
-CREATE TRIGGER `before_insert_update_loufokerie`
+CREATE TRIGGER `loufokerie_period`
 BEFORE INSERT ON `loufokerie`
 FOR EACH ROW
 BEGIN
@@ -187,7 +187,7 @@ DELIMITER ;
 --
 -- Lenght text --
 DELIMITER $$
-CREATE TRIGGER `before_insert_update_contribution`
+CREATE TRIGGER `contribution_lenght`
 BEFORE INSERT ON `contribution`
 FOR EACH ROW
 BEGIN
@@ -200,7 +200,7 @@ $$
 DELIMITER ;
 -- nb contrib > max --
 DELIMITER $$
-CREATE TRIGGER `before_insert_update_contribution`
+CREATE TRIGGER `contribution_nb_max`
 BEFORE INSERT ON `contribution`
 FOR EACH ROW
 BEGIN
@@ -222,8 +222,9 @@ BEGIN
     END IF;
 END;$$
 DELIMITER ;
+-- contribution in period --
 DELIMITER $$
-CREATE TRIGGER before_insert_update_contribution
+CREATE TRIGGER `contribution_in_period`
 BEFORE INSERT ON `contribution`
 FOR EACH ROW
 BEGIN
