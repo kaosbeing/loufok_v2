@@ -3,7 +3,7 @@ Options -Indexes
 
 RewriteEngine On
 
-RewriteBase /loufok
+RewriteBase /loufok_app
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
