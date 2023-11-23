@@ -9,11 +9,18 @@ class AdminController
     }
     public static function adminNouveauPage()
     {
-        adminNouveauPage::render();
+        $titres = LoufokerieModel::getInstance()->findTitles();
+        $periodes = LoufokerieModel::getInstance()->getPeriods();
+        $datas = [
+            'titres' => json_encode($titres),
+            'periodes' => json_encode($periodes),
+        ];
+        adminNouveauPage::render($datas);
     }
     public static function NewLoufokerie()
     {
         $errors = [];
+        $titres = LoufokerieModel::getInstance()->findTitles();
         $periode_available = AdminController::IsPeriodAvailable($_POST['date-debut'], $_POST['date-fin']);
         if (!AdminController::IsPeriodLogic($_POST['date-debut'], $_POST['date-fin'])) {
             $errors[] = "La date est érroné. La période débute après sa fin.";
@@ -48,10 +55,14 @@ class AdminController
             ]);
             HTTP::redirect('/admin');
         }
+        $titres = LoufokerieModel::getInstance()->findTitles();
+        $periodes = LoufokerieModel::getInstance()->getPeriods();
         $datas = [
-            'errors' => $errors
+            'titres' => json_encode($titres),
+            'periodes' => json_encode($periodes),
+            'errors' => $errors,
         ];
-        adminNouveauPage::render([$datas]);
+        adminNouveauPage::render($datas);
     }
     public static function IsPeriodAvailable($debut, $fin): ?array
     {

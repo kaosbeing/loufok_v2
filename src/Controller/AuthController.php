@@ -89,6 +89,9 @@ class AuthController {
     }
 
     public static function loginPage(string $error = null) {
-        LoginPage::render(['error' => $error]);
+        $datas= [
+            'errors'=> $error,
+        ];
+        LoginPage::render($datas);
     }
 }

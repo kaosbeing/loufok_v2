@@ -12,7 +12,7 @@ class userLoufokeriePage {
             Head::basehead();
             Head::title("Loufok | {$datas['loufokerie']['titre_loufokerie']}");
             Head::css("loufokerie");
-            Head::scriptArray(["draft-handler", "textarea-handler"]);
+            Head::scriptArray(["draft-handler", "textarea-handler", "joueur"]);
             ?>
         </head>
 
@@ -40,21 +40,11 @@ class userLoufokeriePage {
                             </div>
                         <?php
                         }
-                    }
+                    }?>
 
-                    if (isset($datas['errors'])) :
-                        foreach ($datas['errors'] as $error) {
-                        ?>
-                            <span class="errors">
-                                <?php
-                                echo $error;
-                                ?>
-                            </span>
-                        <?php
-                        };
-                    endif;
+                    <span class="errors"><?php if (isset($datas['errors'])) : foreach ($datas['errors'] as $error) {echo $error;} endif;?></span>
 
-                    if (!$datas["contributed"]) { ?>
+                    <?php if (!$datas["contributed"]) { ?>
                         <form class="form" method="POST" enctype="multipart/form-data">
                             <div class="form__textWrapper">
                                 <textarea class="input--custom-style form__textarea" name="texte" minlength="50" maxlength="280" required></textarea>

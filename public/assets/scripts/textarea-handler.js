@@ -12,52 +12,38 @@ lengthIndicator.style.top = "50%";
 lengthIndicator.style.transform = "translateY(-50%)";
 
 if (contrib != null) {
-	contrib.parentNode.appendChild(lengthIndicator); // Appends the string limit indicator to the textarea
-	// Both these function are called AFTER the draft is injected in textarea
-	// Autoresize is in settimeout because there was a bug where it was a not the right size on load
-	displayCharLimits()
-	setTimeout(() => {
-		autoResize()
-	}, 50);
+  contrib.parentNode.appendChild(lengthIndicator); // Appends the string limit indicator to the textarea
+  // Both these function are called AFTER the draft is injected in textarea
+  // Autoresize is in settimeout because there was a bug where it was a not the right size on load
+  displayCharLimits();
+  setTimeout(() => {
+    autoResize();
+  }, 50);
 
-	contrib.addEventListener("input", () => {
-		nbCharac = contrib.value.length;
+  contrib.addEventListener("input", () => {
+    nbCharac = contrib.value.length;
 
-		displayCharLimits()
-		autoResize();
-	});
-
-	// Front controls
-	form.addEventListener("submit", (e) => {
-		if (contrib.value.length < 50) {
-			e.preventDefault();
-			alert("La contribution est trop courte !");
-		}
-
-		if (contrib.value.length > 280) {
-			e.preventDefault();
-			alert("La contribution est trop longue !");
-		}
-	});
+    displayCharLimits();
+    autoResize();
+  });
 }
 
 function autoResize() {
-	contrib.style.height = "auto"; // Reset the height to auto to determine the natural height
-	contrib.style.height = contrib.scrollHeight + "px"; // Set the height to match the content height
-	console.log(contrib.scrollHeight);
+  contrib.style.height = "auto"; // Reset the height to auto to determine the natural height
+  contrib.style.height = contrib.scrollHeight + "px"; // Set the height to match the content height
 }
 
 function displayCharLimits() {
-	if (nbCharac < 50) {
-		lengthIndicator.innerText = nbCharac - 50;
-		lengthIndicator.style.color = "red";
-	} else {
-		lengthIndicator.innerText = 280 - nbCharac;
+  if (nbCharac < 50) {
+    lengthIndicator.innerText = nbCharac - 50;
+    lengthIndicator.style.color = "red";
+  } else {
+    lengthIndicator.innerText = 280 - nbCharac;
 
-		if (nbCharac > 280) {
-			lengthIndicator.style.color = "red";
-		} else {
-			lengthIndicator.style.color = "";
-		}
-	}
+    if (nbCharac > 280) {
+      lengthIndicator.style.color = "red";
+    } else {
+      lengthIndicator.style.color = "green";
+    }
+  }
 }

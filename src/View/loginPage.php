@@ -12,16 +12,16 @@ class LoginPage {
             Head::basehead();
             Head::title("Loufok | Connexion");
             Head::css("login");
-            Head::scriptArray(["checkbox-eye"]);
+            Head::scriptArray(["checkbox-eye", "login"]);
             ?>
         </head>
 
         <body>
-            <form action="" method="POST" class="form"> <!-- To verify -->
+            <form action="" method="POST" class="form form--login"> <!-- To verify -->
                 <img src="<?php APP_ROOT_URL_COMPLETE ?>/assets/medias/images/logotype.svg" alt="">
                 <div class="form__element">
                     <label for="email">Email</label>
-                    <input class='input--custom-style' type="email" name="email" id="email" placeholder="Email" required>
+                    <input class='input--custom-style email' type="email" name="email" id="email" placeholder="Email" required>
                 </div>
                 <div class="form__element">
                     <label for="password">Mot de passe</label>
@@ -40,12 +40,7 @@ class LoginPage {
                             </svg>
                         </label>
                     </div>
-                    <?php if (isset($datas['error'])) :
-                    ?>
-                        <span class="errors"><?php echo $datas['error']; ?></span>
-                    <?php
-                    endif;
-                    ?>
+                    <span class="errors"><?php if (isset($datas['errors'])) : foreach ($datas['errors'] as $error) {echo $error;} endif;?></span>
                 </div>
                 <input class="button" type="submit" value="Se connecter">
             </form>

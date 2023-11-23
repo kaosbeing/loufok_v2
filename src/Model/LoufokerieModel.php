@@ -33,15 +33,33 @@ class LoufokerieModel extends Model
         return null;
     }
     /**
-     * Renvoie tout les cadavres prévus
+     * Renvoie tout les cadavres prévus et en cours
      * @return array 
      * @return null 
      */
     public function findFuture(): ?array
     {
-        $today = date('y-m-d');
-        $sql = "SELECT * FROM `{$this->tableName}` WHERE date_debut_loufokerie >= :today";
-        $sth = $this->query($sql, [':today' => $today]);
+        $sql = "SELECT * FROM `{$this->tableName}` WHERE date_debut_loufokerie >= CURDATE()";
+        $sth = $this->query($sql);
+        if ($sth && $sth->rowCount()) {
+            return $sth->fetchAll();
+        }
+
+        return null;
+
+    }
+      /**
+     * Renvoie toute les périodes ou une cadavre est prévue
+     * @return array 
+     * @return null 
+     */
+    public function getPeriods(): ?array
+    {
+        $sql = "SELECT titre_loufokerie, date_debut_loufokerie, date_fin_loufokerie
+        FROM `{$this->tableName}`
+        WHERE date_fin_loufokerie >= CURDATE()
+        ORDER BY date_debut_loufokerie";
+        $sth = $this->query($sql);
         if ($sth && $sth->rowCount()) {
             return $sth->fetchAll();
         }
@@ -74,6 +92,20 @@ class LoufokerieModel extends Model
             return $sth->fetch();
         }
 
+        return null;
+    }
+    /**
+     * Renvoie le dernier cadavre terminé
+     * @return array
+     * @return null
+     */
+    public function findTitles(): ?array
+    {
+        $sql = "SELECT titre_loufokerie FROM `{$this->tableName}`";
+        $sth = $this->query($sql);
+        if ($sth && $sth->rowCount()) {
+            return $sth->fetchAll();
+        }
         return null;
     }
 }

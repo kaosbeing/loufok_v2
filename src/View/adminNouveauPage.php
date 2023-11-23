@@ -14,17 +14,17 @@ class adminNouveauPage
             Head::basehead();
             Head::title("Loufok | Administrateur");
             Head::css("nouveau");
-            Head::scriptArray(["date-handler", "textarea-handler"]);
+            Head::scriptArray(["date-handler", "textarea-handler", "admin"]);
             ?>
         </head>
 
         <body>
             <?php Utils::header('admin', true);?>
             <main>
-                <form class="form" action="" method="POST" enctype="multipart/form-data">
+                <form class="form form--new" action="" method="POST" enctype="multipart/form-data">
                     <div class="form__element">
                         <label for="titre">Titre</label>
-                        <input class='input--custom-style' type="text" name="titre" required>
+                        <input class='input--custom-style titre' type="text" name="titre" required>
                     </div>
                     <div class="form__element">
                             <label for="date-debut">Début</label>
@@ -34,22 +34,27 @@ class adminNouveauPage
                     </div>
                     <div class="form__element">
                             <label for="nb_contributions">Nombre de contributions</label>
-                            <input class='input--custom-style' type="number" min='2' name="nb_contributions" required>
+                            <input class='input--custom-style nb-contrib' type="number" min='2' name="nb_contributions" required>
                     </div>
                     <div class="form__element">
                             <label for="texte">Première contribution</label>
-                            <textarea class='input--custom-style contribution__input' name="texte" required maxlength="280" minlength="50"></textarea>
-                    </div>
+                            <div class="form__textWrapper">
+                                <textarea class="input--custom-style form__textarea" name="texte" minlength="50" maxlength="280" required></textarea>
+                            </div>
                     <input type='submit' class="button" value="Créer">
                 </form>
-                <?php if (isset($datas['errors'])) :
-                    ?>
-                        <span class="errors"><?php echo $datas['errors'][0]; ?></span>
-                    <?php
-                    endif;
-                    ?>
+                <span class="errors"><?php if (isset($datas['errors'])) : foreach ($datas['errors'] as $error) {echo $error;} endif;?></span>
+             
             </main>
         </body>
+            <script>
+                <?php if (isset($datas['titres'])) :?>
+                var titres_JSON = <?php echo $datas['titres'];?>;
+                <?php endif;?>
+                <?php if (isset($datas['periodes'])) :?>
+                var periodes_JSON = <?php echo $datas['periodes'];?>;
+                <?php endif;?>
+            </script>
         </html>
 <?php
     }
