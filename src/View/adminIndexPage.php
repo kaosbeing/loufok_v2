@@ -21,7 +21,7 @@ class adminIndexPage
         <body>
             <?php Utils::header('admin', false) ?>
             <main>
-                <a href="/admin/nouveau" class="button">Créer un nouveau cadavre</a>
+            <a href="<?php echo APP_ROOT_URL_COMPLETE . "/admin/nouveau" ?>" class="button">>Créer un nouveau cadavre</a>
             </main>
         </body>
 
