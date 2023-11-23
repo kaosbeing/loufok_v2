@@ -18,7 +18,7 @@ class LoginPage {
 
         <body>
             <form action="" method="POST" class="form form--login"> <!-- To verify -->
-                <img src="<?php APP_ROOT_URL_COMPLETE ?>/assets/medias/images/logotype.svg" alt="">
+                <img src="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/medias/images/logotype.svg" alt="">
                 <div class="form__element">
                     <label for="email">Email</label>
                     <input class='input--custom-style email' type="email" name="email" id="email" placeholder="Email" required>
