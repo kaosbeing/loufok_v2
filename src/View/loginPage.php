@@ -40,7 +40,13 @@ class LoginPage {
                             </svg>
                         </label>
                     </div>
-                    <span class="errors"><?php if (isset($datas['errors'])) : foreach ($datas['errors'] as $error) {echo $error;} endif;?></span>
+                    <?php
+                    if (isset($datas['errors'])) :
+                    ?>
+                        <span class="errors"><?php $datas['errors'] ?></span>
+                    <?php
+                    endif;
+                    ?>
                 </div>
                 <input class="button" type="submit" value="Se connecter">
             </form>
