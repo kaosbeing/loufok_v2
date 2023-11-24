@@ -13,6 +13,9 @@
   font-size: 16px;
   font-family: var(--helvetica);
 }
+:root.dys {
+  font-family: var(--dys);
+}
 
 .d-none {
   display: none !important;

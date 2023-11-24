@@ -1,31 +1,70 @@
 .accessibility-menu {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: var(--primary);
-  color: white;
-  border-radius: 50%;
-  padding: 15px;
-  cursor: pointer;
+  bottom: 2vh;
+  right: 2vh;
   z-index: 1000;
 }
 
-.accessibility-menu__content {
-  position: fixed;
-  bottom: 80px; /* Adjust this value to control how much of the content is visible */
-  right: 20px;
-  border-radius: 5px;
+.accessibility-menu__container {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.accessibility-menu__button {
+  min-height: 100%;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50rem;
   padding: 15px;
-  z-index: 999;
-  transform: translateY(100%); /* Start off-screen */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accessibility-menu__content {
+  height: 100%;
+  border-radius: 50rem;
+  gap: 24px;
+  background-color: var(--primary);
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
   transition: transform 0.3s ease; /* Add smooth transition */
 }
 
-.accessibility-menu__content.show {
-  transform: translateY(0); /* Slide in when shown */
+.accessibility-menu.show .accessibility-menu__content {
+  transform: translateX(0); /* Slide in when shown */
+}
+
+.font-size {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.font-size--add,
+.font-size--sub {
+  background-color: white;
+  color: var(--primary);
+  border: none;
+  border-radius: 50rem;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.font-fam-change {
+  background-color: white;
+  color: var(--primary);
+  border: none;
+  border-radius: 50rem;
+  padding: 8px;
+  cursor: pointer;
 }
 
 .accessibility-menu__icon {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
 }
