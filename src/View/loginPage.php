@@ -50,7 +50,7 @@ class LoginPage {
                 </div>
                 <input class="button" type="submit" value="Se connecter">
             </form>
-
+            <?php Utils::footer(); ?>
         </body>
 
         </html>
