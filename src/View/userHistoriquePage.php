@@ -49,6 +49,7 @@ class userHistoriquePage
                     </div>
                 </div>
             </main>
+            <?php Utils::footer(); ?>
         </body>
         </html>
 <?php

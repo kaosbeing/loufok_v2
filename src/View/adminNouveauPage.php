@@ -52,6 +52,7 @@ class adminNouveauPage
                 <span class="errors"><?php if (isset($datas['errors'])) : foreach ($datas['errors'] as $error) {echo $error;} endif;?></span>
              
             </main>
+            <?php Utils::footer(); ?>
         </body>
             <script>
                 <?php if (isset($datas['titres'])) :?>

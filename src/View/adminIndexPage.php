@@ -28,6 +28,7 @@ class adminIndexPage
             <a href="<?php echo APP_ROOT_URL_COMPLETE . "/admin/nouveau" ?>" class="button">Créer un nouveau cadavre</a>
             </main>
         </body>
+        <?php Utils::footer(); ?>
         <script>
                 <?php if (isset($datas['periodes'])) :?>
                 var periodes_JSON = <?php echo $datas['periodes'];?>;

@@ -55,6 +55,7 @@ class userLoufokeriePage {
                     ?>
                 </div>
             </main>
+            <?php Utils::footer(); ?>
         </body>
         
         </html>
