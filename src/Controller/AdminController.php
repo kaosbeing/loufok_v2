@@ -5,7 +5,11 @@ class AdminController
 
     public static function adminIndexPage()
     {
-        adminIndexPage::render();
+        $periodes = LoufokerieModel::getInstance()->getPeriods();
+        $datas = [
+            'periodes' => json_encode($periodes),
+        ];
+        adminIndexPage::render($datas);
     }
     public static function adminNouveauPage()
     {
@@ -51,7 +55,7 @@ class AdminController
                 'texte' => $_POST['texte'],
                 'id_loufokerie' => $loufokerie,
                 'ordre_soumission' => 1,
-                'date_soumission' => date('y-m-d'),
+                'date_soumission' => date('y-m-d', strtotime($_POST['date-debut'])),
             ]);
             HTTP::redirect('/admin');
         }

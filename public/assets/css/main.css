@@ -1,15 +1,16 @@
 @import url(./reset.css);
-@import url(./header.css);
 @import url(./../fonts/HelveticaNowDisplay/helvetica.css);
+@import url(./header.css);
+@import url(./accessibility.css);
+@import url(./../fonts/OpenDys/OpenDys.css);
 
 :root {
   --primary: #8531da;
   --primary-use: #6a27ae;
   --disabled: #777779;
   --helvetica: "HelveticaNowDisplay";
-}
-
-* {
+  --dys: "OpenDyslexic";
+  font-size: 16px;
   font-family: var(--helvetica);
 }
 
@@ -45,6 +46,7 @@
   background: var(--primary);
   color: white;
   border: none;
+  width: fit-content;
 }
 
 .button:hover {

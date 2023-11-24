@@ -1,0 +1,31 @@
+.accessibility-menu {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.accessibility-menu__content {
+  position: fixed;
+  bottom: 80px; /* Adjust this value to control how much of the content is visible */
+  right: 20px;
+  border-radius: 5px;
+  padding: 15px;
+  z-index: 999;
+  transform: translateY(100%); /* Start off-screen */
+  transition: transform 0.3s ease; /* Add smooth transition */
+}
+
+.accessibility-menu__content.show {
+  transform: translateY(0); /* Slide in when shown */
+}
+
+.accessibility-menu__icon {
+  width: 30px;
+  height: 30px;
+}
