@@ -43,7 +43,7 @@ class LoginPage {
                     <?php
                     if (isset($datas['errors'])) :
                     ?>
-                        <span class="errors"><?php $datas['errors'] ?></span>
+                        <span class="errors"><?php echo $datas['errors'] ?></span>
                     <?php
                     endif;
                     ?>
