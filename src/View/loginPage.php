@@ -12,7 +12,7 @@ class LoginPage {
             Head::basehead();
             Head::title("Loufok | Connexion");
             Head::css("login");
-            Head::scriptArray(["checkbox-eye", "login"]);
+            Head::scriptArray(["checkbox-eye", "login",  'accessibility']);
             ?>
         </head>
 

@@ -14,17 +14,25 @@ class adminIndexPage
             Head::basehead();
             Head::title("Loufok | Administrateur");
             Head::css("index_admin");
-            Head::scriptArray([]);
+            Head::scriptArray(['/fullcalendar-6.1.9/dist/index.global.min', 'calendar', 'accessibility']);
+            Head::css("calendar");
             ?>
         </head>
 
         <body>
             <?php Utils::header('admin', false) ?>
             <main>
-            <a href="<?php echo APP_ROOT_URL_COMPLETE . "/admin/nouveau" ?>" class="button">>Créer un nouveau cadavre</a>
+            <div id='calendar'></div>
+            <div id="tooltip-container"></div>
+
+            <a href="<?php echo APP_ROOT_URL_COMPLETE . "/admin/nouveau" ?>" class="button">Créer un nouveau cadavre</a>
             </main>
         </body>
-
+        <script>
+                <?php if (isset($datas['periodes'])) :?>
+                var periodes_JSON = <?php echo $datas['periodes'];?>;
+                <?php endif;?>
+            </script>
         </html>
 <?php
     }

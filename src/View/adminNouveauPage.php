@@ -12,15 +12,20 @@ class adminNouveauPage
         <head>
             <?php
             Head::basehead();
-            Head::title("Loufok | Administrateur");
+            Head::title("Loufok | Nouvelle Loufokerie");
             Head::css("nouveau");
-            Head::scriptArray(["date-handler", "textarea-handler", "admin"]);
+            Head::scriptArray(["date-handler", "textarea-handler", "admin", '/fullcalendar-6.1.9/dist/index.global.min', 'calendar',  'accessibility']);
+            Head::css("calendar");
+           
             ?>
         </head>
 
         <body>
             <?php Utils::header('admin', true);?>
             <main>
+                <div id='calendar'></div>
+                <div id="tooltip-container"></div>
+
                 <form class="form form--new" action="" method="POST" enctype="multipart/form-data">
                     <div class="form__element">
                         <label for="titre">Titre</label>
@@ -37,10 +42,11 @@ class adminNouveauPage
                             <input class='input--custom-style nb-contrib' type="number" min='2' name="nb_contributions" required>
                     </div>
                     <div class="form__element">
-                            <label for="texte">Première contribution</label>
-                            <div class="form__textWrapper">
-                                <textarea class="input--custom-style form__textarea" name="texte" minlength="50" maxlength="280" required></textarea>
-                            </div>
+                        <label for="texte">Première contribution</label>
+                        <div class="form__textWrapper">
+                            <textarea class="input--custom-style form__textarea" name="texte" minlength="50" maxlength="280" required></textarea>
+                        </div>
+                    </div>
                     <input type='submit' class="button" value="Créer">
                 </form>
                 <span class="errors"><?php if (isset($datas['errors'])) : foreach ($datas['errors'] as $error) {echo $error;} endif;?></span>

@@ -8,13 +8,14 @@ window.addEventListener("DOMContentLoaded", () => {
   const contrib = document.querySelector(".form__textarea");
   const errors_span = document.querySelector(".errors");
   let local_form = localStorage.getItem("form_admin");
+
   if (local_form != null) {
     titre.value = local_form["titre"];
     debut.value = local_form["debut"];
     fin.value = local_form["fin"];
     nb_contrib.value = local_form["nb_contrib"];
-    contrib.value = local_form["contrib"];
   }
+
   form.addEventListener("submit", (e) => {
     let errors = [];
     titres_JSON.forEach((titre_val) => {
@@ -22,15 +23,13 @@ window.addEventListener("DOMContentLoaded", () => {
         errors.push("Le titre " + titre + " est déjà utilisé.");
       }
     });
-    if (debut.value < today || fin.value < today || fin.value > debut.value) {
+    if (debut.value < today || fin.value < today || fin.value < debut.value) {
       errors.push("La date est invalide");
     }
     periodes_JSON.forEach((periodes) => {
       if (
-        (debut.value >= periodes.date_debut_loufokerie &&
-          debut.value <= periodes.date_fin_loufokerie) ||
-        (fin.value >= periodes.date_debut_loufokerie &&
-          fin.value <= periodes.date_fin_loufokerie)
+        (debut.value >= periodes.start && debut.value <= periodes.end) ||
+        (fin.value >= periodes.start && fin.value <= periodes.end)
       ) {
         errors.push("Une autre loufokerie est déjà prévue a cette période.");
       }
@@ -44,7 +43,12 @@ window.addEventListener("DOMContentLoaded", () => {
     if (contrib.value.length > 280) {
       errors.push("La contribution est trop longue.");
     }
-    if (errors != []) {
+
+    if ((errors = [])) {
+      localStorage.removeItem("form_admin");
+    } else {
+      console.log(errors);
+      errors_span.innerText = "";
       errors.forEach((error) => {
         errors_span.innerText += error;
       });
@@ -53,12 +57,9 @@ window.addEventListener("DOMContentLoaded", () => {
         debut: debut.value,
         fin: fin.value,
         nb_contrib: nb_contrib.value,
-        contrib: contrib.value,
       };
       localStorage.setItem("form_admin", local);
       e.preventDefault();
-    } else {
-      localStorage.removeItem("form_admin");
     }
   });
 });

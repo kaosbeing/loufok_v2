@@ -14,7 +14,7 @@ class userHistoriquePage
             Head::basehead();
             Head::title("Loufok | {$datas['loufokerie']['titre_loufokerie']}");
             Head::css("historique");
-            Head::scriptArray([]);
+            Head::script('accessibility');
             ?>
         </head>
 

@@ -1,0 +1,98 @@
+/* Custom styles for FullCalendar */
+#calendar {
+  width: 100%;
+  padding: 10%;
+}
+@keyframes gelatine {
+  from,
+  to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.1, 0.9);
+  }
+  75% {
+    transform: scale(0.95, 1.05);
+  }
+}
+
+#tooltip-container {
+  position: absolute;
+  display: none;
+  padding: 10px 24px;
+  border-radius: 85% 15% 85% 15% / 15% 85% 15% 85%;
+  background-color: var(--primary);
+  color: white;
+  border: var(--primary) solid 2px;
+  z-index: 9999999;
+  font-size: 1.4rem;
+  animation: gelatine 0.5s;
+}
+.fc .fc-daygrid-body-natural .fc-daygrid-day-events {
+  margin: 0;
+}
+.tooltip-container__activated {
+  display: block;
+}
+
+.fc-event-title {
+  display: none;
+}
+.fc .fc-daygrid-day.fc-day-today {
+  background: none;
+  -webkit-box-shadow: inset 0px 0px 0px 2px var(--primary-use);
+  -moz-box-shadow: inset 0px 0px 0px 2px var(--primary-use);
+  box-shadow: inset 0px 0px 0px 2px var(--primary-use);
+}
+.fc .fc-bg-event {
+  opacity: 50%;
+}
+.fc-toolbar-chunk {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.fc-button-group {
+  margin: 0 !important;
+}
+
+.fc .fc-button-primary {
+  background-color: var(--primary);
+  border-color: var(--primary-use);
+  color: white;
+}
+.fc .fc-button-primary:disabled {
+  background-color: var(--disabled);
+  border-color: var(--disabled);
+}
+.fc .fc-button-primary:disabled:hover {
+  background-color: var(--disabled);
+  border-color: var(--disabled);
+}
+.fc .fc-button-primary:hover {
+  background-color: var(--primary-use);
+  border-color: var(--primary-use);
+}
+.fc .fc-button-primary:not(:disabled).fc-button-active,
+.fc .fc-button-primary:not(:disabled):active {
+  background-color: var(--primary-use);
+  border-color: var(--primary-use);
+}
+.fc-toolbar-title::first-letter {
+  text-transform: capitalize;
+}
+@media only screen and (max-width: 768px) {
+  .fc-toolbar-chunk {
+    flex-direction: column;
+  }
+  .fc-button {
+    padding: 0.3rem !important;
+  }
+  .fc .fc-toolbar-title {
+    font-size: 1.5rem !important;
+  }
+}

@@ -12,7 +12,7 @@ class userIndexPage {
             Head::basehead();
             Head::title("Loufok | {$datas['user']['nom_plume']}");
             Head::css("index_joueur");
-            Head::scriptArray(['switch']);
+            Head::scriptArray(['switch', 'accessibility']);
             ?>
         </head>
 
@@ -28,15 +28,15 @@ class userIndexPage {
                     <?php
                     if ($datas["currentLoufokerie"]) {
                         $loufokerie = $datas["currentLoufokerie"];
-                        $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd/m/y');
-                        $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd/m/y');
+                        $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd M y');
+                        $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd M y');
                     ?>
                         <div>
                             <h4 class="loufokerie__pretitle">Loufokerie en cours</h4>
                             <h3 class="loufokerie__title"><?php echo $loufokerie["titre_loufokerie"] ?></h3>
                         </div>
                         <div class="loufokerie__infos">
-                            <p class="loufokerie__dates"><?php echo $date_debut ?> - <?php echo $date_fin ?></p>
+                            <p class="loufokerie__dates"><?php echo $date_debut ?> | <?php echo $date_fin ?></p>
                             <p class="loufokerie__contributions"><?php echo $datas['nb_contribution'] ?> / <?php echo $loufokerie['nb_contributions'] ?><img src="<?php echo APP_ROOT_URL_COMPLETE . "/assets/medias/images/contributions.svg" ?>" alt="contributions"></p>
                         </div>
                         <hr class="loufokerie__separator">
@@ -70,15 +70,15 @@ class userIndexPage {
                     <?php
                     if ($datas["oldLoufokerie"]) {
                         $loufokerie = $datas["oldLoufokerie"];
-                        $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd/m/y');
-                        $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd/m/y');
+                        $date_debut = date_format(date_create($loufokerie['date_debut_loufokerie']), 'd M y');
+                        $date_fin = date_format(date_create($loufokerie['date_fin_loufokerie']), 'd M y');
                     ?>
                         <div>
                             <h4 class="loufokerie__pretitle">Ancienne Loufokerie</h4>
                             <h3 class="loufokerie__title"><?php echo $loufokerie["titre_loufokerie"] ?></h3>
                         </div>
                         <div class="loufokerie__infos">
-                            <p class="loufokerie__dates"><?php echo $date_debut ?> - <?php echo $date_fin ?></p>
+                            <p class="loufokerie__dates"><?php echo $date_debut ?> | <?php echo $date_fin ?></p>
                             <p class="loufokerie__contributions"><?php echo $datas['nb_old_contributions'] ?> <img src="<?php echo APP_ROOT_URL_COMPLETE . "/assets/medias/images/contributions.svg" ?>" alt="contributions"></p>
                         </div>
                         <hr class="loufokerie__separator">
@@ -98,6 +98,7 @@ class userIndexPage {
                     <?php } ?>
                 </div>
             </main>
+            <?php Utils::footer(); ?>
         </body>
 
         </html>

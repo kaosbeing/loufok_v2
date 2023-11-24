@@ -12,7 +12,7 @@ class userLoufokeriePage {
             Head::basehead();
             Head::title("Loufok | {$datas['loufokerie']['titre_loufokerie']}");
             Head::css("loufokerie");
-            Head::scriptArray(["draft-handler", "textarea-handler", "joueur"]);
+            Head::scriptArray(["draft-handler", "textarea-handler", "joueur",  'accessibility']);
             ?>
         </head>
 
@@ -56,7 +56,7 @@ class userLoufokeriePage {
                 </div>
             </main>
         </body>
-
+        
         </html>
 <?php
     }
