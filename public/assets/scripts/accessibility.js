@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const button_sub = document.querySelector(".font-size--sub");
   const button_add = document.querySelector(".font-size--add");
   const button_change = document.querySelector(".font-fam-change");
-  let currentFont = "helvetica"; // Add this line to declare and initialize the variable
+  let currentFont = "helvetica";
 
   function changeFontSize(step) {
     const root = document.documentElement;
@@ -17,16 +17,20 @@ window.addEventListener("DOMContentLoaded", () => {
       ".accessibility-menu__content"
     );
     menuContainer.style.display =
-      menuContainer.style.display === "none" ? "block" : "none";
+      menuContainer.style.display === "none" ? "flex" : "none";
     menuContainer.classList.toggle("show"); // Toggle the 'show' class
   }
 
   function changeFontFamily() {
     const root = document.documentElement;
+    const currentFont = localStorage.getItem("fontPreference") || "helvetica";
     const newFont = currentFont === "helvetica" ? "--dys" : "--helvetica";
 
-    root.style.fontFamily = `var(${newFont})`;
-    currentFont = currentFont === "helvetica" ? "dys" : "helvetica";
+    root.classList.toggle("dys");
+    localStorage.setItem(
+      "fontPreference",
+      currentFont === "helvetica" ? "dys" : "helvetica"
+    );
   }
 
   menu.addEventListener("click", (e) => {
