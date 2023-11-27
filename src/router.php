@@ -19,8 +19,8 @@ foreach ($routes as $r['route']) {
 foreach ($routes as $r) {
     if ($_SERVER['REQUEST_METHOD'] === $r['method']) {
 
-        // Si y'a pas de token, redirect automatiquement sur le login
-        if (!isset($_COOKIE['token']) && ($route != "/" && $route != "/login")) {
+        // Si y'a pas de token & , redirect automatiquement sur le login
+        if (!isset($_COOKIE['token']) && ($route != "/" && $route != "/login" && !str_contains($route, "/api/"))) {
             HTTP::redirect("/login");
             exit;
         } else if (isset($_COOKIE['token']) && ($route == "/" || $route == "/login")) {

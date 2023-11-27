@@ -52,8 +52,13 @@ $routes = [
         'script' => 'user@userHistoriquePage',
     ],
     [
+        'route' => ['/api/loufok'],
+        'method' => 'GET',
+        'script' => 'api@allLoufokeries',
+    ],
+    [
         'route' => ['/api/loufok/{int:id}'],
         'method' => 'GET',
-        'script' => 'user@userIndexPage',
+        'script' => 'api@loufokerie',
     ],
 ];
