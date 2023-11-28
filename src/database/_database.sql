@@ -207,12 +207,12 @@ BEGIN
     DECLARE total_length INT;
 
     -- Calculate the total length of contributions for the loufokerie
-    SELECT SUM(LENGTH(texte)) INTO total_length
+    SELECT COUNT(*) INTO total_length
     FROM `contribution`
     WHERE id_loufokerie = NEW.id_loufokerie;
 
     -- Check if adding the new contribution exceeds the limit
-    IF (total_length + LENGTH(NEW.texte)) >= (
+    IF total_length >= (
         SELECT nb_contributions
         FROM `loufokerie`
         WHERE id = NEW.id_loufokerie
