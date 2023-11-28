@@ -52,13 +52,18 @@ $routes = [
         'script' => 'user@userHistoriquePage',
     ],
     [
-        'route' => ['/api/loufok'],
+        'route' => ['/api/loufokerie/all'],
         'method' => 'GET',
         'script' => 'api@allLoufokeries',
     ],
     [
-        'route' => ['/api/loufok/{int:id}'],
+        'route' => ['/api/loufokerie/{int:id}'],
         'method' => 'GET',
         'script' => 'api@loufokerie',
+    ],
+    [
+        'route' => ['/api/like/{int:id}'],
+        'method' => 'POST',
+        'script' => 'api@like',
     ],
 ];

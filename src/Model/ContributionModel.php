@@ -66,4 +66,18 @@ class ContributionModel extends Model {
 
         return $this->query($sql, [':id_loufokerie' => $id_loufok])->fetch() ? $this->query($sql, [':id_loufokerie' => $id_loufok])->fetch()["nb_contrib"] : null;
     }
+
+    /**
+     * 
+     */
+    public function getArrayFullOfEmptyStringsExceptItsNotEmpty(int $id_loufokerie): ?array {
+        $texts = [];
+        $contributions = ContributionModel::getInstance()->findByOrdered(['id_loufokerie' => $id_loufokerie]);
+
+        foreach ($contributions as $contribution) {
+            array_push($texts, $contribution['texte']);
+        }
+
+        return $texts;
+    }
 }

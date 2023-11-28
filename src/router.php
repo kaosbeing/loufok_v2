@@ -64,14 +64,11 @@ foreach ($routes as $r) {
 
         foreach ($r['route'] as $routeURL) {
             preg_match_all('/{\S*:?([^:]+)}/U', $routeURL, $func_args);
-            $psroute = preg_replace_callback('/{(\S*)?:?[^:]+}/U', function ($matches) {
+            $psroute = preg_replace_callback('/{(\S*)?:?[^:]+}/U', function ($matches) use ($route_types) {
                 return isset($matches[1]) ? $route_types[$matches[1]] ?? '([^/]+)' : '([^/]+)';
             }, $routeURL);
 
-
             if (preg_match('#^/?' . $psroute . '/*$#', $route, $arguments)) {
-
-
                 array_shift($arguments);
                 $args = array_combine($func_args[1], $arguments);
 
