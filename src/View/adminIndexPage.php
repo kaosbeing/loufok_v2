@@ -1,10 +1,8 @@
 <?php
 
-class adminIndexPage
-{
+class adminIndexPage {
 
-    public static function render(array $datas = [])
-    {
+    public static function render(array $datas = []) {
 ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -22,18 +20,19 @@ class adminIndexPage
         <body>
             <?php Utils::header('admin', false) ?>
             <main>
-            <div id='calendar'></div>
-            <div id="tooltip-container"></div>
+                <div id='calendar'></div>
+                <div id="tooltip-container"></div>
 
-            <a href="<?php echo APP_ROOT_URL_COMPLETE . "/admin/nouveau" ?>" class="button">Créer un nouveau cadavre</a>
+                <a href="<?php echo APP_ROOT_URL_COMPLETE . "/admin/nouveau" ?>" class="button">Créer un nouveau cadavre</a>
             </main>
         </body>
         <?php Utils::footer(); ?>
         <script>
-                <?php if (isset($datas['periodes'])) :?>
-                var periodes_JSON = <?php echo $datas['periodes'];?>;
-                <?php endif;?>
-            </script>
+            <?php if (isset($datas['periodes'])) : ?>
+                var periodes_JSON = <?php echo $datas['periodes']; ?>;
+            <?php endif; ?>
+        </script>
+
         </html>
 <?php
     }

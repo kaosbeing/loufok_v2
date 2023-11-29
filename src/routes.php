@@ -52,7 +52,7 @@ $routes = [
         'script' => 'user@userHistoriquePage',
     ],
     [
-        'route' => ['/api/loufokerie/all'],
+        'route' => ['/api/loufokeries'],
         'method' => 'GET',
         'script' => 'api@allLoufokeries',
     ],
@@ -62,7 +62,7 @@ $routes = [
         'script' => 'api@loufokerie',
     ],
     [
-        'route' => ['/api/like/{int:id}'],
+        'route' => ['/api/like'],
         'method' => 'POST',
         'script' => 'api@like',
     ],

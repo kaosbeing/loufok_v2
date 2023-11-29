@@ -1,18 +1,15 @@
 <?php
 
-class AdminController
-{
+class AdminController {
 
-    public static function adminIndexPage()
-    {
+    public static function adminIndexPage() {
         $periodes = LoufokerieModel::getInstance()->getPeriods();
         $datas = [
             'periodes' => json_encode($periodes),
         ];
         adminIndexPage::render($datas);
     }
-    public static function adminNouveauPage()
-    {
+    public static function adminNouveauPage() {
         $titres = LoufokerieModel::getInstance()->findTitles();
         $periodes = LoufokerieModel::getInstance()->getPeriods();
         $datas = [
@@ -21,8 +18,7 @@ class AdminController
         ];
         adminNouveauPage::render($datas);
     }
-    public static function NewLoufokerie()
-    {
+    public static function NewLoufokerie() {
         $errors = [];
         $titres = LoufokerieModel::getInstance()->findTitles();
         $periode_available = AdminController::IsPeriodAvailable($_POST['date-debut'], $_POST['date-fin']);
@@ -48,6 +44,7 @@ class AdminController
                 'titre_loufokerie' => $_POST['titre'],
                 'date_debut_loufokerie' => date('y-m-d', strtotime($_POST['date-debut'])),
                 'date_fin_loufokerie' => date('y-m-d', strtotime($_POST['date-fin'])),
+                'nb_jaime' => 0,
                 'nb_contributions' => $_POST['nb_contributions'],
             ]);
             ContributionModel::getInstance()->create([
@@ -68,8 +65,7 @@ class AdminController
         ];
         adminNouveauPage::render($datas);
     }
-    public static function IsPeriodAvailable($debut, $fin): ?array
-    {
+    public static function IsPeriodAvailable($debut, $fin): ?array {
         $valid_date = true;
         $date_debut = null;
         $date_fin = null;
@@ -86,16 +82,14 @@ class AdminController
         }
         return [$valid_date, $date_debut, $date_fin];
     }
-    public static function IsPeriodLogic($debut, $fin): ?bool
-    {
+    public static function IsPeriodLogic($debut, $fin): ?bool {
         $valid_date = true;
         if ($debut > $fin) {
             $valid_date = false;
         }
         return $valid_date;
     }
-    public static function IsTitreAvailable($titre): ?bool
-    {
+    public static function IsTitreAvailable($titre): ?bool {
         $valid_titre = true;
         $loufokeries = LoufokerieModel::getInstance()->findAll();
         if (!empty($loufokeries)) {
