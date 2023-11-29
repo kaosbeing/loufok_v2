@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector(".form--new");
+  const form = document.querySelector(".form");
   const contrib = document.querySelector(".form__textarea");
   const errors_span = document.querySelector(".errors");
   form.addEventListener("submit", (e) => {

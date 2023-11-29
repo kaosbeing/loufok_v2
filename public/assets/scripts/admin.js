@@ -7,20 +7,21 @@ window.addEventListener("DOMContentLoaded", () => {
   const nb_contrib = document.querySelector(".nb-contrib");
   const contrib = document.querySelector(".form__textarea");
   const errors_span = document.querySelector(".errors");
-  let local_form = localStorage.getItem("form_admin");
+  let local_form = JSON.parse(localStorage.getItem("form_admin"));
 
   if (local_form != null) {
-    titre.value = local_form["titre"];
-    debut.value = local_form["debut"];
-    fin.value = local_form["fin"];
-    nb_contrib.value = local_form["nb_contrib"];
+    titre.value = local_form.titre;
+    debut.value = local_form.debut;
+    fin.value = local_form.fin;
+    nb_contrib.value = local_form.nb_contrib;
+    contrib.value = local_form.draft;
   }
 
   form.addEventListener("submit", (e) => {
     let errors = [];
     titres_JSON.forEach((titre_val) => {
-      if (titre_val.titre_loufokerie == titre) {
-        errors.push("Le titre " + titre + " est déjà utilisé.");
+      if (titre_val.titre_loufokerie == titre.value) {
+        errors.push("Le titre " + titre.value + " est déjà utilisé.");
       }
     });
     if (debut.value < today || fin.value < today || fin.value < debut.value) {
@@ -43,22 +44,21 @@ window.addEventListener("DOMContentLoaded", () => {
     if (contrib.value.length > 280) {
       errors.push("La contribution est trop longue.");
     }
-
-    if ((errors = [])) {
+    if (errors == []) {
       localStorage.removeItem("form_admin");
     } else {
-      console.log(errors);
       errors_span.innerText = "";
       errors.forEach((error) => {
-        errors_span.innerText += error;
+        errors_span.innerText += " " + error;
       });
       let local = {
         titre: titre.value,
         debut: debut.value,
         fin: fin.value,
         nb_contrib: nb_contrib.value,
+        draft: contrib.value,
       };
-      localStorage.setItem("form_admin", local);
+      localStorage.setItem("form_admin", JSON.stringify(local));
       e.preventDefault();
     }
   });

@@ -4,6 +4,12 @@ document.addEventListener("DOMContentLoaded", function () {
     delete obj[oldKey];
     return obj;
   }
+  function datePlus(obj, key) {
+    date = new Date(obj[key]);
+    date.setDate(date.getDate() + 1);
+    obj[key] = date.toISOString().split("T")[0];
+    return obj;
+  }
   function addKeyValue(obj, key, value) {
     obj[key] = value;
     return obj;
@@ -12,27 +18,33 @@ document.addEventListener("DOMContentLoaded", function () {
   const calendarEl = document.getElementById("calendar");
   const tooltipContainer = document.getElementById("tooltip-container");
   if (periodes_JSON != null) {
-    periodes_JSON.forEach((obj) => renameKey(obj, "titre_loufokerie", "title"));
-    periodes_JSON.forEach((obj) =>
-      renameKey(obj, "date_debut_loufokerie", "start")
-    );
-    periodes_JSON.forEach((obj) =>
-      renameKey(obj, "date_fin_loufokerie", "end")
-    );
-    periodes_JSON.forEach((obj) =>
-      addKeyValue(obj, "color", " var(--primary)")
-    );
-    periodes_JSON.forEach((obj) => addKeyValue(obj, "display", "background"));
+    periodes_JSON.forEach((obj) => {
+      renameKey(obj, "titre_loufokerie", "title");
+      renameKey(obj, "date_debut_loufokerie", "start");
+      renameKey(obj, "date_fin_loufokerie", "end");
+      addKeyValue(obj, "color", " var(--primary)");
+      addKeyValue(obj, "display", "background");
+      addKeyValue(obj, "allDay", "true");
+      datePlus(obj, "end");
+    });
     firstLoufokerieStartDate = periodes_JSON.reduce((minDate, loufokerie) => {
       const startDate = new Date(loufokerie.start);
-      return startDate < minDate ? startDate : minDate;
+      const startOfMonth = new Date(
+        startDate.getFullYear(),
+        startDate.getMonth(),
+        1
+      );
+      return startOfMonth < minDate ? startOfMonth : minDate;
     }, new Date());
+  } else {
+    periodes_JSON = [];
   }
 
   const formattedStartDate = firstLoufokerieStartDate
     .toISOString()
     .split("T")[0];
   let calendar = new FullCalendar.Calendar(calendarEl, {
+    events: periodes_JSON,
     buttonText: {
       today: "Aujourd'hui",
     },
@@ -56,9 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initial setup
   calendar.render();
-  periodes_JSON.forEach(function (event) {
-    calendar.addEvent(event);
-  });
 
   document.addEventListener("click", function (event) {
     const isClickInsideCalendarEvent = event.target.closest(".fc-event");
