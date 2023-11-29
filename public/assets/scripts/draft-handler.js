@@ -20,5 +20,5 @@ if (submission_area != null) {
 
 function saveDraft() {
     localStorage.setItem("submission_draft", submission_area.value);
-    console.log("Saved");
+
 }

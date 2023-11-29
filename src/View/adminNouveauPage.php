@@ -14,7 +14,7 @@ class adminNouveauPage
             Head::basehead();
             Head::title("Loufok | Nouvelle Loufokerie");
             Head::css("nouveau");
-            Head::scriptArray(["date-handler", "textarea-handler", "admin", '/fullcalendar-6.1.9/dist/index.global.min', 'calendar',  'accessibility']);
+            Head::scriptArray(["date-handler", "textarea-handler", '/fullcalendar-6.1.9/dist/index.global.min', 'calendar',  'accessibility', "admin"]);
             Head::css("calendar");
            
             ?>
