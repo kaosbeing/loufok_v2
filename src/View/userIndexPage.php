@@ -19,10 +19,10 @@ class userIndexPage {
         <body>
             <?php Utils::header("user"); ?>
             <main>
-                <h1 class="main__title">Mon Espace</h1>
+                <h1 class="main__title"><?php echo $datas["user"]["nom_plume"] ?></h1>
                 <div class="switch">
-                    <div tabindex="0" class="switch-button activated" aria-selected="true" aria-label="Loufokerie active">Active</div>
-                    <div tabindex="0" class="switch-button" aria-selected="false" aria-label="Dernière loufokerie">Dernière</div>
+                    <div tabindex="0" class="switch-button activated" aria-selected="true" aria-label="Loufokerie active">En cours</div>
+                    <div tabindex="0" class="switch-button" aria-selected="false" aria-label="Dernière loufokerie">Historique</div>
                 </div>
                 <div class="loufokerie current">
                     <?php
@@ -100,6 +100,9 @@ class userIndexPage {
             </main>
             <?php Utils::footer(); ?>
         </body>
+        <script>
+            var user = <?php echo $datas['user'];?>;
+        </script>
 
         </html>
 <?php

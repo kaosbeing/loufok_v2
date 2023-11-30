@@ -5,7 +5,8 @@ main {
   align-items: center;
   flex-direction: column;
   gap: 2rem;
-  margin-top: 4rem;
+  margin-top: 64px;
+  margin-bottom: 32px;
 }
 
 .loufokerie {
@@ -69,8 +70,6 @@ main {
   border-radius: 0.5rem;
   font-weight: 600;
   text-align: center;
-  /* Ok this is useless on phone but it stresses me out  */
-  /* *Agreed */
   cursor: pointer;
 }
 .switch-button {

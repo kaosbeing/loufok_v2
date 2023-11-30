@@ -61,6 +61,7 @@ class adminNouveauPage
                 <?php if (isset($datas['periodes'])) :?>
                 var periodes_JSON = <?php echo $datas['periodes'];?>;
                 <?php endif;?>
+                var user = <?php echo $datas['user'];?>;
             </script>
         </html>
 <?php

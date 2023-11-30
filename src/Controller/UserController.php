@@ -11,8 +11,7 @@ class UserController {
         $oldLoufokerie = LoufokerieModel::getInstance()->findOld($user['id']);
         $old_contribution = $oldLoufokerie ? ContributionModel::getInstance()->findBy(['id_joueur' => $user['id'], 'id_loufokerie' => $oldLoufokerie['id']])[0] : null;
         $nb_old_contributions = $oldLoufokerie ? count(ContributionModel::getInstance()->findBy(['id_loufokerie' => $oldLoufokerie['id']])) : null;
-
-        userIndexPage::render([
+        $datas =[
             "error" => $error,
             "currentLoufokerie" => $currentLoufokerie,
             "nb_contribution" => $nb_contribution,
@@ -21,7 +20,8 @@ class UserController {
             "old_contribution" => $old_contribution,
             "nb_old_contributions" => $nb_old_contributions,
             "user" => $user,
-        ]);
+        ];
+        userIndexPage::render( $datas);
     }
 
     public static function userLoufokeriePage() {
@@ -34,13 +34,14 @@ class UserController {
         }
 
         $contributionArray = ContributionModel::getInstance()->getArrayFullOfEmptyStringsExceptRandomAndOwnSubmission($user["id"], $loufokerie["id"]);
-
-        userLoufokeriePage::render([
+        $datas =[
+            "user" => $user,
             "loufokerie" => $loufokerie,
             "contributionArray" => $contributionArray,
             "contributed" => UserController::hasContributedTo($loufokerie),
             "token" => $_COOKIE['token']
-        ]);
+        ];
+        userLoufokeriePage::render($datas);
     }
     public static function userSubmission() {
         $today = date_create(date('y-m-d'));

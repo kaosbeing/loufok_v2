@@ -10,11 +10,13 @@ class AdminController {
         adminIndexPage::render($datas);
     }
     public static function adminNouveauPage() {
+        $user = JoueurModel::getInstance()->findBy(['ad_mail_administrateur' => $_COOKIE['email']])[0];
         $titres = LoufokerieModel::getInstance()->findTitles();
         $periodes = LoufokerieModel::getInstance()->getPeriods();
         $datas = [
             'titres' => json_encode($titres),
             'periodes' => json_encode($periodes),
+            "user" => $user,
         ];
         adminNouveauPage::render($datas);
     }
