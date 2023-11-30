@@ -38,11 +38,16 @@ class userLoufokeriePage {
                                 <img class="contribution__questionmark" src="<?php echo APP_ROOT_URL_COMPLETE . "/assets/medias/images/question_mark.svg" ?>" alt="question mark">
                                 <img class="contribution__questionmark" src="<?php echo APP_ROOT_URL_COMPLETE . "/assets/medias/images/question_mark.svg" ?>" alt="question mark">
                             </div>
-                        <?php
+                    <?php
                         }
-                    }?>
+                    } ?>
 
-                    <span class="errors"><?php if (isset($datas['errors'])) : foreach ($datas['errors'] as $error) {echo $error;} endif;?></span>
+                    <span class="errors">
+                        <?php if (isset($datas['errors'])) : foreach ($datas['errors'] as $error) {
+                                echo $error;
+                            }
+                        endif; ?>
+                    </span>
 
                     <?php if (!$datas["contributed"]) { ?>
                         <form class="form" method="POST" enctype="multipart/form-data">
@@ -55,9 +60,12 @@ class userLoufokeriePage {
                     ?>
                 </div>
             </main>
+            <script>
+                var user_token = "<?php echo $datas["token"] ?>";
+            </script>
             <?php Utils::footer(); ?>
         </body>
-        
+
         </html>
 <?php
     }

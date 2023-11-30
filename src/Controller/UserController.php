@@ -39,6 +39,7 @@ class UserController {
             "loufokerie" => $loufokerie,
             "contributionArray" => $contributionArray,
             "contributed" => UserController::hasContributedTo($loufokerie),
+            "token" => $_COOKIE['token']
         ]);
     }
     public static function userSubmission() {
