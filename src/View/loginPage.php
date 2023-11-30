@@ -1,8 +1,10 @@
 <?php
 
-class LoginPage {
+class LoginPage
+{
 
-    public static function render(array $datas = []) {
+    public static function render(array $datas = [])
+    {
 ?>
         <!DOCTYPE html>
         <html lang="fr">
