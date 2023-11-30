@@ -16,16 +16,16 @@ class RandomModel extends Model
     }
 
     /**
-     * Return the random submission of a user for a loufokerie
+     * Renvoit la contribution random d'un user pour une loufokerie
      * 
-     * @param int $id_user id of the user
-     * @param int $id_loufokerie id of the loufokerie
-     * @return array The submission of the user
+     * @param int $id_user id d'un joueur
+     * @param int $id_loufokerie id d'une loufokerie 
+     * @return array
      */
     public function getRandomSubmission(int $id_user, int $id_loufokerie): ?array
     {
-        $sql = "SELECT id_contribution FROM `{$this->tableName}` WHERE id_joueur = '$id_user' AND id_loufokerie = '$id_loufokerie'";
-        $id_contrib = $this->query($sql)->fetch() ? $this->query($sql)->fetch()["id_contribution"] : null;
+        $sql = "SELECT id_contribution FROM `{$this->tableName}` WHERE id_joueur = '$id_user' AND id_loufokerie = :id_loufokerie";
+        $id_contrib = $this->query($sql, [':id_loufokerie' => $id_loufokerie])->fetch() ? $this->query($sql, [':id_loufokerie' => $id_loufokerie])->fetch()["id_contribution"] : null;
         $contrib = null;
         if ($id_contrib)
         {
@@ -36,10 +36,10 @@ class RandomModel extends Model
     }
 
     /**
-     * Create a random_contribution object with a random id_contribution
+     * Créez une contribution random d'un user pour une loufokerie
      * 
-     * @param int $id_user ID of the user
-     * @param int $id_loufokerie ID of the loufokerie
+     * @param int $id_user id d'un joueur
+     * @param int $id_loufokerie id d'une loufokerie
      */
     public function assignRandomSubmission(int $id_user, int $id_loufokerie)
     {

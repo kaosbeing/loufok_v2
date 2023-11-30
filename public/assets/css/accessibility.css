@@ -1,0 +1,77 @@
+.accessibility-menu {
+  position: fixed;
+  bottom: 2vh;
+  right: 2vh;
+  z-index: 1000;
+}
+
+.accessibility-menu__container {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: var(--primary);
+  transition: all 0.3s ease-in-out;
+  border-radius: 50rem;
+}
+.accessibility-menu__button {
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50rem;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  width: 70px;
+}
+
+.accessibility-menu__content {
+  border-radius: 100%;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+}
+
+.font-size {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.font-size--add,
+.font-size--sub {
+  background-color: white;
+  color: var(--primary);
+  border: none;
+  border-radius: 100%;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+}
+
+.font-fam-change {
+  background-color: white;
+  color: var(--primary);
+  border: none;
+  border-radius: 100%;
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+}
+
+.accessibility-menu__icon {
+  width: 24px;
+  height: 24px;
+}

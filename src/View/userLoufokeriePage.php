@@ -1,10 +1,8 @@
 <?php
 
-class userLoufokeriePage
-{
+class userLoufokeriePage {
 
-    public static function render(array $datas = [])
-    {
+    public static function render(array $datas = []) {
 ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -12,9 +10,9 @@ class userLoufokeriePage
         <head>
             <?php
             Head::basehead();
-            Head::title("Loufok | ");
-            Head::scriptArray([]);
+            Head::title("Loufok | {$datas['loufokerie']['titre_loufokerie']}");
             Head::css("loufokerie");
+            Head::scriptArray(["draft-handler", "textarea-handler", "joueur",  'accessibility']);
             ?>
         </head>
 
@@ -24,20 +22,16 @@ class userLoufokeriePage
                 <h1 class="main__title"><?php echo $datas["loufokerie"]["titre_loufokerie"] ?></h1>
                 <div class="contributions">
                     <?php
-                    foreach ($datas["contributionArray"] as $contribution)
-                    {
+                    foreach ($datas["contributionArray"] as $contribution) {
                     ?>
                         <?php
-                        if ($contribution != "")
-                        {
+                        if ($contribution != "") {
                         ?>
                             <div class="contribution">
                                 <p><?php echo $contribution ?></p>
                             </div>
                         <?php
-                        }
-                        else
-                        {
+                        } else {
                         ?>
                             <div class="contribution contribution--unknown">
                                 <img class="contribution__questionmark" src="<?php echo APP_ROOT_URL_COMPLETE . "/assets/medias/images/question_mark.svg" ?>" alt="question mark">
@@ -46,14 +40,24 @@ class userLoufokeriePage
                             </div>
                         <?php
                         }
-                        ?>
-                    <?php
-                    }
+                    }?>
+
+                    <span class="errors"><?php if (isset($datas['errors'])) : foreach ($datas['errors'] as $error) {echo $error;} endif;?></span>
+
+                    <?php if (!$datas["contributed"]) { ?>
+                        <form class="form" method="POST" enctype="multipart/form-data">
+                            <div class="form__textWrapper">
+                                <textarea class="input--custom-style form__textarea" name="texte" minlength="50" maxlength="280" required></textarea>
+                            </div>
+                            <input type='submit' class="button form__submit" value="Contribuer">
+                        </form>
+                    <?php }
                     ?>
                 </div>
             </main>
+            <?php Utils::footer(); ?>
         </body>
-
+        
         </html>
 <?php
     }

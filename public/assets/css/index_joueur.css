@@ -7,3 +7,83 @@ main {
   gap: 2rem;
   margin-top: 4rem;
 }
+
+.loufokerie {
+  color: #fff;
+  background-color: var(--primary);
+  border-radius: 20px;
+  padding: 1rem;
+  max-width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.loufokerie__pretitle {
+  text-align: center;
+  font-style: italic;
+}
+
+.loufokerie__title {
+  font-weight: 800;
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+  font-variant: small-caps;
+  text-align: center;
+}
+
+.loufokerie__infos {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.loufokerie__separator {
+  width: 100%;
+  color: white;
+}
+
+.loufokerie__contributions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.loufokerie__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.loufokerie__joinContrib {
+  padding: 0.75rem;
+  background-color: #fff;
+  color: var(--primary);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  /* Ok this is useless on phone but it stresses me out  */
+  /* *Agreed */
+  cursor: pointer;
+}
+.switch-button {
+  color: grey;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+.switch-button:hover {
+  font-weight: 600;
+}
+.switch-button.activated {
+  color: var(--primary);
+  font-weight: 600;
+}

@@ -50,5 +50,20 @@ $routes = [
         'route' => ['/mon-espace/historique'],
         'method' => 'GET',
         'script' => 'user@userHistoriquePage',
-    ]
+    ],
+    [
+        'route' => ['/api/loufokeries'],
+        'method' => 'GET',
+        'script' => 'api@allLoufokeries',
+    ],
+    [
+        'route' => ['/api/loufokerie/{int:id}'],
+        'method' => 'GET',
+        'script' => 'api@loufokerie',
+    ],
+    [
+        'route' => ['/api/like'],
+        'method' => 'POST',
+        'script' => 'api@like',
+    ],
 ];

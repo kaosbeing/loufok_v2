@@ -1,0 +1,71 @@
+@font-face {
+  font-family: "OpenDyslexicAlta";
+  src: url("OpenDyslexicAlta-Bold.otf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexicAlta";
+  src: url("OpenDyslexicAlta-Italic.otf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexicAlta";
+  src: url("OpenDyslexicAlta-BoldItalic.otf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexicAlta";
+  src: url("OpenDyslexicAlta-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("OpenDyslexic-Bold.otf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("OpenDyslexic-BoldItalic.otf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("OpenDyslexic-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexicMono";
+  src: url("OpenDyslexicMono-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OpenDyslexic";
+  src: url("OpenDyslexic-Italic.otf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}

@@ -1,10 +1,8 @@
 <?php
 
-class adminIndexPage
-{
+class adminIndexPage {
 
-    public static function render(array $datas = [])
-    {
+    public static function render(array $datas = []) {
 ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -13,17 +11,27 @@ class adminIndexPage
             <?php
             Head::basehead();
             Head::title("Loufok | Administrateur");
-            Head::scriptArray([]);
-            Head::cssArray(["index_admin"]);
+            Head::css("index_admin");
+            Head::scriptArray(['/fullcalendar-6.1.9/dist/index.global.min', 'calendar', 'accessibility']);
+            Head::css("calendar");
             ?>
         </head>
 
         <body>
             <?php Utils::header('admin', false) ?>
             <main>
-                <a href="/admin/nouveau" class="button">Créer un nouveau cadavre</a>
+                <div id='calendar'></div>
+                <div id="tooltip-container"></div>
+
+                <a href="<?php echo APP_ROOT_URL_COMPLETE . "/admin/nouveau" ?>" class="button">Créer un nouveau cadavre</a>
             </main>
         </body>
+        <?php Utils::footer(); ?>
+        <script>
+            <?php if (isset($datas['periodes'])) : ?>
+                var periodes_JSON = <?php echo $datas['periodes']; ?>;
+            <?php endif; ?>
+        </script>
 
         </html>
 <?php

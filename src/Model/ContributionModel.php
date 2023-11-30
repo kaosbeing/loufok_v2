@@ -1,26 +1,25 @@
 <?php
 
-class ContributionModel extends Model
-{
+class ContributionModel extends Model {
     protected $tableName = APP_TABLE_PREFIX . 'contribution';
     protected static $instance;
 
-    public static function getInstance()
-    {
-        if (!isset(self::$instance))
-        {
+    public static function getInstance() {
+        if (!isset(self::$instance)) {
             self::$instance = new self();
         }
 
         return self::$instance;
     }
 
-
-    public function findByOrdered(array $criterias): ?array
-    {
+    /**
+     * Renvoit toute les contributions par ordre de soumission pour des critères précisés
+     * @param array $criterias le tableau des critères
+     * @return array
+     */
+    public function findByOrdered(array $criterias): ?array {
         // décomposer le tableau des critères
-        foreach ($criterias as $f => $v)
-        {
+        foreach ($criterias as $f => $v) {
             $fields[] = "$f = ?";
             $values[] = $v;
         }
@@ -31,34 +30,54 @@ class ContributionModel extends Model
         return $this->query($sql, $values)->fetchAll();
     }
 
-    public function getArrayFullOfEmptyStringsExceptRandomAndOwnSubmission(int $id_joueur, int $id_loufokerie): ?array
-    {
+
+    /**
+     * Renvoit un array de remplit de strings vides sauf la contribution random et sa propre contribution
+     * @param int $id_joueur
+     * @param int $id_loufokerie
+     * @return array
+     */
+    public function getArrayFullOfEmptyStringsExceptRandomAndOwnSubmission(int $id_joueur, int $id_loufokerie): ?array {
         $emptied = [];
         $contributions = ContributionModel::getInstance()->findByOrdered(['id_loufokerie' => $id_loufokerie]);
         $random = RandomModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie])[0];
-        $joueur_contribution = ContributionModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie])[0];
-        foreach ($contributions as $contribution)
-        {
-            if ($contribution['id'] == $random['id_contribution'])
-            {
+        $joueur_contribution = ContributionModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie]) ? ContributionModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie])[0] : null;
+        foreach ($contributions as $contribution) {
+            if ($contribution['id'] == $random['id_contribution']) {
                 array_push($emptied, $contribution['texte']);
-            }
-            else if ($contribution['id'] == $joueur_contribution['id'])
-            {
+            } else if (isset($joueur_contribution['id']) && $contribution['id'] == $joueur_contribution['id']) {
                 array_push($emptied, $contribution['texte']);
-            }
-            else
-            {
+            } else {
                 array_push($emptied, '');
             }
         }
         return $emptied;
     }
 
-    public function getSubmissionNumber($id_loufok): ?int
-    {
-        $sql = "SELECT COUNT(*) as nb_contrib FROM `{$this->tableName}` WHERE id_loufokerie = '$id_loufok'";
 
-        return $this->query($sql)->fetch() ? $this->query($sql)->fetch()["nb_contrib"] : null;
+    /**
+     * Renvoit un array de remplit de strings vides sauf la contribution random et sa propre contribution
+     * @param int $id_joueur
+     * @param int $id_loufokerie
+     * @return int
+     */
+    public function getSubmissionNumber(int $id_loufok): ?int {
+        $sql = "SELECT COUNT(*) as nb_contrib FROM `{$this->tableName}` WHERE id_loufokerie = :id_loufokerie";
+
+        return $this->query($sql, [':id_loufokerie' => $id_loufok])->fetch() ? $this->query($sql, [':id_loufokerie' => $id_loufok])->fetch()["nb_contrib"] : null;
+    }
+
+    /**
+     * 
+     */
+    public function getArrayFullOfEmptyStringsExceptItsNotEmpty(int $id_loufokerie): ?array {
+        $texts = [];
+        $contributions = ContributionModel::getInstance()->findByOrdered(['id_loufokerie' => $id_loufokerie]);
+
+        foreach ($contributions as $contribution) {
+            array_push($texts, $contribution['texte']);
+        }
+
+        return $texts;
     }
 }

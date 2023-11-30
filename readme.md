@@ -9,6 +9,7 @@ Contribution cachée : Changer les points d'interrogation
 Interface Loufokeries selon le blocking (voir DM)
 
 Todolist :
+PHASE 1 :
 
 - [x] Projet : init BDD
 - [x] Projet : init CSS
@@ -34,11 +35,21 @@ Todolist :
 - [ ] User : Brouillon de contribution
 - [ ] Projet : Accessibilité (un ou deux trucs, pas absolument tout) 
 
+PHASE 2 :
+
+-   [ ] Contrôleur : API (pour daylire)
+-   [ ] API
+-   [x] API : Dispatcher
+-   [ ] API : routes
+-   [x] Projet : manifest JSON
+-   [ ] Projet : cache CSS
+-   [ ] Projet : notifications
+
 OPTIONNEL
 
-- [ ] Loufokerie : Un blob derrière chaque contribution pour faire un effet joli
-- [ ] User : Voir profil
-- [ ] User : Modifier données (nom plume, mdp)
+-   [ ] Loufokerie : Un blob derrière chaque contribution pour faire un effet joli
+-   [ ] User : Voir profil
+-   [ ] User : Modifier données (nom plume, mdp)
 
-- [ ] Projet : Websocket (???)
-- [ ] Admin : Modifier Loufokerie (???)
+-   [ ] Projet : Websocket (???)
+-   [ ] Admin : Modifier Loufokerie (???)
