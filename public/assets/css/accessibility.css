@@ -34,8 +34,6 @@
   justify-content: center;
   padding: 15px;
   display: flex;
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(100%);
 }
 
 .font-size {
