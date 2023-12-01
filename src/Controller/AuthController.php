@@ -17,13 +17,18 @@ class AuthController {
         }
 
         if ($joueur) {
+          
             $user = $joueur[0];
             if ($_POST['password'] == $user['mot_de_passe_joueur']) {
+                
                 if (isset($user["token"])){
                    $token_gen = $user['token'];
-                } 
+                 
+                }
+              
                 setcookie('email', $user['ad_mail_joueur'], time() + (10 * 365 * 24 * 60 * 60));
                 setcookie('token', $token_gen, time() + time() + (10 * 365 * 24 * 60 * 60));
+                
                 JoueurModel::getInstance()->update($user['id'], [
                     'token' => $token_gen,
                 ]);

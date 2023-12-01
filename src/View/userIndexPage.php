@@ -47,7 +47,17 @@ class userIndexPage {
                                 <p class="loufokerie__error"><?php echo $datas['error'] ?></p>
                             <?php
                             endif;
-
+                           
+                     if (!$datas["access"]) { ?>
+                        <div class="spinner">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                        <p>euillez revenir demain ou lorsque le participant actuel aura finit sa contribution.</p>
+                        <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace" ?>" aria-label="Retour"></a>
+                     <?php } else{
+               
                             if ($datas['random_contribution']) :
                             ?>
                                 <p><?php echo $datas["random_contribution"]["texte"] ?></p>
@@ -59,7 +69,7 @@ class userIndexPage {
                                 <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace/loufokerie" ?>" class="loufokerie__joinContrib">Rejoindre la loufokerie</a>
                             <?php
                             endif;
-                            ?>
+                        }?>
                         </div>
                     <?php
                     } else { ?>
@@ -90,6 +100,7 @@ class userIndexPage {
                             <?php
                             endif; ?>
                             <p><?php echo $datas['old_contribution']['texte'] ?></p>
+                            
                             <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace/historique" ?>" class="loufokerie__joinContrib">Voir la dernière Loufokerie</a>
                         </div>
                     <?php

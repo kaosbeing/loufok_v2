@@ -52,6 +52,15 @@ class userLoufokeriePage {
                             <input type='submit' class="button form__submit" value="Contribuer">
                         </form>
                     <?php }
+                     if (isset($datas["reservation"])) { ?>
+                        <div class="spinner">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                        <p>Veuillez revenir demain ou lorsque le participant actuel aura finit sa contribution.</p>
+                        <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace" ?>" aria-label="Retour"></a>
+                     <?php }
                     ?>
                 </div>
             </main>

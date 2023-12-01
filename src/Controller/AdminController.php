@@ -43,8 +43,8 @@ class AdminController {
             $loufokerie = LoufokerieModel::getInstance()->create([
                 'id_administrateur' => $user['id'],
                 'titre_loufokerie' => $_POST['titre'],
-                'date_debut_loufokerie' => date('y-m-d', strtotime($_POST['date-debut'])),
-                'date_fin_loufokerie' => date('y-m-d', strtotime($_POST['date-fin'])),
+                'date_debut_loufokerie' => date('Y-m-d', strtotime($_POST['date-debut'])),
+                'date_fin_loufokerie' => date('Y-m-d', strtotime($_POST['date-fin'])),
                 'nb_jaime' => 0,
                 'nb_contributions' => $_POST['nb_contributions'],
             ]);
@@ -53,7 +53,7 @@ class AdminController {
                 'texte' => $_POST['texte'],
                 'id_loufokerie' => $loufokerie,
                 'ordre_soumission' => 1,
-                'date_soumission' => date('y-m-d', strtotime($_POST['date-debut'])),
+                'date_soumission' => date('Y-m-d', strtotime($_POST['date-debut'])),
             ]);
             HTTP::redirect('/admin');
         }

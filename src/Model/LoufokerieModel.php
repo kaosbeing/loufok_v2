@@ -19,7 +19,7 @@ class LoufokerieModel extends Model {
      * @return null 
      */
     public function findCurrent(): ?array {
-        $today = date('y-m-d');
+        $today = date('Y-m-d');
         $sql = "SELECT * FROM `{$this->tableName}` WHERE date_debut_loufokerie <= :today AND date_fin_loufokerie >= :today LIMIT 1;";
         $sth = $this->query($sql, [':today' => $today]);
         if ($sth && $sth->rowCount()) {
@@ -67,7 +67,7 @@ class LoufokerieModel extends Model {
      * @return null Si aucun
      */
     public function findOld(int $userId): ?array {
-        $today = date('y-m-d');
+        $today = date('Y-m-d');
         $sql = "SELECT *
         FROM `{$this->tableName}`
         WHERE id IN (

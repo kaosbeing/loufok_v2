@@ -68,7 +68,13 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleMenu();
       }
     });
-
+  document
+    .querySelector(".accessibility-menu__button")
+    .addEventListener("keypress", (e) => {
+      if (!e.target.closest(".accessibility-menu__content")) {
+        toggleMenu();
+      }
+    });
   // Load user preferences on page load
   loadPreferences();
 });

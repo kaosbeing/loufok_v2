@@ -61,4 +61,19 @@ class JoueurModel extends Model {
 
         return $usernames;
     }
+      /**
+     * Retourne un joueur si il a reservé la contribution aujourd'hui
+     *
+     * @return array
+     */
+    public function findReserved(): ?array {
+        $sql = "SELECT * FROM `{$this->tableName}` WHERE reservation = CURDATE()";
+        $sth = $this->query($sql);
+        if ($sth && $sth->rowCount()) {
+            return $sth->fetch();
+        }
+
+        return null;
+    }
+
 }

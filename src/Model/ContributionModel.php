@@ -40,11 +40,13 @@ class ContributionModel extends Model {
     public function getArrayFullOfEmptyStringsExceptRandomAndOwnSubmission(int $id_joueur, int $id_loufokerie): ?array {
         $emptied = [];
         $contributions = ContributionModel::getInstance()->findByOrdered(['id_loufokerie' => $id_loufokerie]);
-        $random = RandomModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie])[0];
+        $random = RandomModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie]) ?  RandomModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie])[0] : null;
         $joueur_contribution = ContributionModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie]) ? ContributionModel::getInstance()->findBy(['id_joueur' => $id_joueur, 'id_loufokerie' => $id_loufokerie])[0] : null;
+  
         foreach ($contributions as $contribution) {
-            if ($contribution['id'] == $random['id_contribution']) {
+            if (isset($random) && $contribution['id'] == $random['id_contribution']) {
                 array_push($emptied, $contribution['texte']);
+             
             } else if (isset($joueur_contribution['id']) && $contribution['id'] == $joueur_contribution['id']) {
                 array_push($emptied, $contribution['texte']);
             } else {

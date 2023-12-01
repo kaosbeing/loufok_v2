@@ -96,8 +96,6 @@ function regexArrayMatch($regexArray, $string) {
     $result = false;
     foreach ($regexArray as $regex) {
         if (preg_match($regex, $string)) {
-            var_dump($regex);
-            var_dump($string);
             $result = true;
         }
     }
