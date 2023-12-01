@@ -13,9 +13,12 @@ class UserController {
         $nb_old_contributions = $oldLoufokerie ? count(ContributionModel::getInstance()->findBy(['id_loufokerie' => $oldLoufokerie['id']])) : null;
         $reserved = JoueurModel::getInstance()->findReserved();
         $access = true;
-        if ($reserved != $user && $reserved['reservation'] == date('Y-m-d')){
+        if(isset($reserved)){
+             if ($reserved != $user && $reserved['reservation'] == date('Y-m-d')){
             $access = false;
+            }
         }
+       
         $datas =[
             "error" => $error,
             "currentLoufokerie" => $currentLoufokerie,
