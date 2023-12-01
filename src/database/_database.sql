@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 28 nov. 2023 à 13:58
+-- Généré le : ven. 01 déc. 2023 à 17:28
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.1
 
@@ -123,15 +123,16 @@ CREATE TABLE `joueur` (
   `sexe` varchar(50) DEFAULT NULL,
   `ddn` date DEFAULT NULL,
   `mot_de_passe_joueur` varchar(50) NOT NULL,
-  `token` varchar(50) DEFAULT NULL
+  `token` varchar(50) DEFAULT NULL,
+  `reservation` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `joueur`
 --
 
-INSERT INTO `joueur` (`id`, `nom_plume`, `ad_mail_joueur`, `sexe`, `ddn`, `mot_de_passe_joueur`, `token`) VALUES
-(1, 'Corbeau', 'corbeau@loufok.com', 'M', '2003-11-11', 'AvSp#OtSg', NULL);
+INSERT INTO `joueur` (`id`, `nom_plume`, `ad_mail_joueur`, `sexe`, `ddn`, `mot_de_passe_joueur`, `token`, `reservation`) VALUES
+(1, 'Corbeau', 'corbeau@loufok.com', 'M', '2003-11-11', 'AvSp#OtSg69', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -270,19 +271,19 @@ ALTER TABLE `administrateur`
 -- AUTO_INCREMENT pour la table `contribution`
 --
 ALTER TABLE `contribution`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `joueur`
 --
 ALTER TABLE `joueur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `loufokerie`
 --
 ALTER TABLE `loufokerie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Contraintes pour les tables déchargées
