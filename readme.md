@@ -11,23 +11,29 @@ Interface Loufokeries selon le blocking (voir DM)
 Todolist :
 PHASE 1 :
 
--   [x] Projet : init BDD
--   [x] Projet : init CSS
--   [x] Projet : init Controller template
-        ~~- [ ] Projet : init view template~~
--   [x] Projet : Contrôles sur la BDD
--   [ ] Projet : Doc
+- [x] Projet : init BDD
+- [x] Projet : init CSS
+- [ ] Projet : init Controller template
+~~- [ ] Projet : init view template~~
+- [ ] Projet : Contrôles sur la BDD
+- [x] Projet : manifest JSON
+- [ ] Projet : cache CSS
 
--   [x] Contrôleur : User
--   [x] Contrôleur : Admin
--   [x] Contrôleur : Auth
--   [x] Contrôleur : Errors (pour les 404, 403, etc)
+- [x] Contrôleur : User
+- [x] Contrôleur : Admin
+- [x] Contrôleur : Auth
+- [x] Contrôleur : Errors (pour les 404, 403, etc)
+- [ ] Contrôleur : API (pour daylire)
 
--   [x] Admin : Nouvelle loufokerie
--   [x] User : rejoindre loufokerie
--   [x] User : Contribuer
--   [x] User : Consulter dernier loufokerie (juste le dernier auquel il a participé)
--   [x] User : Brouillon
+- [ ] Admin : Nouvelle loufokerie
+- [x] User : rejoindre loufokerie
+- [ ] User : Contribuer
+- [ ] User : Consulter dernier loufokerie (juste le dernier auquel il a participé)
+- [ ] User : if !loufok afficher "pas de loufok"
+- [ ] API
+- [ ] API : Dispatcher
+- [ ] User : Brouillon de contribution
+- [ ] Projet : Accessibilité (un ou deux trucs, pas absolument tout) 
 
 PHASE 2 :
 

@@ -1,24 +1,40 @@
-const submission_area = document.querySelector('.form__textarea');
-let savetimer = setTimeout(() => { }, 0);
-if (submission_area != null) {
+window.addEventListener('DOMContentLoaded', () => {
+    const submission_area = document.querySelector('.form__textarea');
+    let savetimer = setTimeout(() => { }, 0);
+    if (submission_area != null) {
+        let local_draft = localStorage.getItem(user_token);
 
-    let local_draft = localStorage.getItem("submission_draft");
+        if (local_draft != null) {
+            submission_area.value = local_draft;
+        }
 
-    if (local_draft != null) {
-        submission_area.value = local_draft;
+        /* Idea is : The draft is saved few seconds after the user stops typing */
+        submission_area.addEventListener('input', () => {
+            clearTimeout(savetimer);
+
+            savetimer = setTimeout(() => {
+                saveDraft();
+            }, 2000);
+        })
     }
 
-    /* Idea is : The draft is saved few seconds after the user stops typing */
-    submission_area.addEventListener('input', () => {
-        clearTimeout(savetimer);
+    function saveDraft() {
+        localStorage.setItem(user_token, submission_area.value);
 
-        savetimer = setTimeout(() => {
-            saveDraft();
-        }, 3000);
-    })
-}
+        var pos = submission_area.getBoundingClientRect();
+        let popup = document.createElement('span');
 
-function saveDraft() {
-    localStorage.setItem("submission_draft", submission_area.value);
+        popup.style.backgroundColor = "#eee";
+        popup.style.borderRadius = "4px";
+        popup.style.position = "absolute";
+        popup.style.padding = "0.5rem";
+        popup.innerHTML = "Brouillon Enregistré !"
+        document.body.append(popup);
+        popup.style.top = pos.top + window.scrollY - popup.offsetHeight - 8 + "px"; // Put popup on top of element
+        popup.style.left = pos.left + submission_area.offsetWidth / 2 - popup.offsetWidth / 2 + "px"; // Put center of popup on center of the element
 
-}
+        popupTimeout = setTimeout(() => {
+            popup.remove();
+        }, 1000);
+    }
+})

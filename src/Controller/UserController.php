@@ -75,6 +75,7 @@ class UserController {
             "contributionArray" => $contributionArray,
             "contributed" => $contributionAccess,
             "reservation" => $reservation,
+            "token" => $_COOKIE['token']
         ];
     
         userLoufokeriePage::render($datas);

@@ -34,18 +34,13 @@ if (form) {
     contrib.style.height = contrib.scrollHeight + "px"; // Set the height to match the content height
   }
 
-  function displayCharLimits() {
-    if (nbCharac < 50) {
-      lengthIndicator.innerText = nbCharac - 50;
-      lengthIndicator.style.color = "red";
-    } else {
-      lengthIndicator.innerText = 280 - nbCharac;
+function displayCharLimits() {
+  lengthIndicator.innerText = nbCharac;
 
-      if (nbCharac > 280) {
-        lengthIndicator.style.color = "red";
-      } else {
-        lengthIndicator.style.color = "green";
-      }
-    }
+  if (nbCharac < 50 || nbCharac > 280) {
+    lengthIndicator.style.color = "red";
+  } else {
+    lengthIndicator.style.color = "green";
+
   }
 }
