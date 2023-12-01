@@ -29,7 +29,8 @@ main {
 }
 
 .form {
-  max-width: 500px;
+  max-width: 60%;
+  margin: auto;
 }
 
 .form__checkbox {
