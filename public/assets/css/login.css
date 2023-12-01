@@ -28,11 +28,6 @@ main {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.form {
-  max-width: 60%;
-  margin: auto;
-}
-
 .form__checkbox {
   display: block;
   cursor: pointer;
