@@ -48,7 +48,7 @@ class Utils {
      * @param string $token Token stored in cookies. Can be null or false.
      * @return string "admin", "user" or false if there is no token
      */
-    public static function userType(string $token): string {
+    public static function userType(string $token): ?string {
         $user_type = false;
 
         $search = JoueurModel::getInstance()->findBy(["token" => $_COOKIE['token']]);
