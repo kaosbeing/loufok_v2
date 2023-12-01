@@ -54,7 +54,7 @@ class userIndexPage {
                             <div class="bounce2"></div>
                             <div class="bounce3"></div>
                         </div>
-                        <p>euillez revenir demain ou lorsque le participant actuel aura finit sa contribution.</p>
+                        <p>Veuillez revenir demain ou lorsque le participant actuel aura finit sa contribution.</p>
                         <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace" ?>" aria-label="Retour"></a>
                      <?php } else{
                
