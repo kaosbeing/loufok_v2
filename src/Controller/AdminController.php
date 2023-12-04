@@ -10,7 +10,7 @@ class AdminController {
         adminIndexPage::render($datas);
     }
     public static function adminNouveauPage() {
-        $user = JoueurModel::getInstance()->findBy(['ad_mail_administrateur' => $_COOKIE['email']])[0];
+        $user = AdministrateurModel::getInstance()->findBy(['ad_mail_administrateur' => $_COOKIE['email']])[0];
         $titres = LoufokerieModel::getInstance()->findTitles();
         $periodes = LoufokerieModel::getInstance()->getPeriods();
         $datas = [
@@ -28,7 +28,7 @@ class AdminController {
             $errors[] = "La date est érroné. La période débute après sa fin.";
         }
         if (!$periode_available[0]) {
-            $errors[] = "Une Loufokerie est déjà prévue du ".$periode_available[1]." au ". $periode_available[2].".";
+            $errors[] = "Une Loufokerie est déjà prévue du " . $periode_available[1] . " au " . $periode_available[2] . ".";
         }
         if (!AdminController::IsTitreAvailable($_POST['titre'])) {
 
@@ -75,12 +75,12 @@ class AdminController {
             foreach ($loufokeries as $loufokerie) {
                 if ($debut >= $loufokerie['date_debut_loufokerie'] && $debut <= $loufokerie['date_fin_loufokerie']) {
                     $valid_date = false;
-                    $date_debut =  $loufokerie['date_debut_loufokerie'] ;
+                    $date_debut =  $loufokerie['date_debut_loufokerie'];
                     $date_fin = $loufokerie['date_fin_loufokerie'];
                 }
                 if ($fin >= $loufokerie['date_debut_loufokerie'] && $fin <= $loufokerie['date_fin_loufokerie']) {
                     $valid_date = false;
-                    $date_debut =  $loufokerie['date_debut_loufokerie'] ;
+                    $date_debut =  $loufokerie['date_debut_loufokerie'];
                     $date_fin = $loufokerie['date_fin_loufokerie'];
                 }
             }

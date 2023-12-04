@@ -36,10 +36,10 @@ class JoueurModel extends Model {
     }
 
     /**
-     * Retrieves all names from all contribs from a Loufok
+     * Récupère tous les noms de joueurs d'une loufokerie
      * 
-     * @param int $id id of the loufokerie
-     * @return array of all usernames, empty array if no usernames
+     * @param int $id id de la loufokerie
+     * @return array de tous les noms de plume, null si aucun
      */
     public function GetAllNamesFromLoufokerie(int $id): array {
         $usernames = [];
@@ -61,7 +61,7 @@ class JoueurModel extends Model {
 
         return $usernames;
     }
-      /**
+    /**
      * Retourne un joueur si il a reservé la contribution aujourd'hui
      *
      * @return array
@@ -75,5 +75,4 @@ class JoueurModel extends Model {
 
         return null;
     }
-
 }
