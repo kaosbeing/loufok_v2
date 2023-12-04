@@ -101,7 +101,6 @@ class Model {
         // On transforme le tableau en chaîne de caractères séparée par des AND
         $fields_list = implode(' AND ', $fields);
         $sql = "SELECT * FROM `{$this->tableName}` WHERE $fields_list";
-        dump($sql);
         return $this->query($sql, $values)->fetchAll();
     }
 
