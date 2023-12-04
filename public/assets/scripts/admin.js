@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const nb_contrib = document.querySelector(".nb-contrib");
   const contrib = document.querySelector(".form__textarea");
   const errors_span = document.querySelector(".errors");
-  let local_form = JSON.parse(localStorage.getItem("form_admin"));
+  let local_form = JSON.parse(localStorage.getItem(user_token));
 
   if (local_form != null) {
     titre.value = local_form.titre;
@@ -45,7 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
       errors.push("La contribution est trop longue.");
     }
     if (errors == []) {
-      localStorage.removeItem("form_admin");
+      localStorage.removeItem(user_token);
     } else {
       errors_span.innerText = "";
       errors.forEach((error) => {
@@ -58,7 +58,7 @@ window.addEventListener("DOMContentLoaded", () => {
         nb_contrib: nb_contrib.value,
         draft: contrib.value,
       };
-      localStorage.setItem("form_admin", JSON.stringify(local));
+      localStorage.setItem(user_token, JSON.stringify(local));
       e.preventDefault();
     }
   });
