@@ -2,7 +2,7 @@
     "name": "Loufok",
     "short_name": "Loufok",
     "description": "Pour créer des loufokeries toujours plus crazyyy",
-    "start_url": "./index.php",
+    "start_url": "/",
     "display": "standalone",
     "theme_color": "#8531da",
     "background_color": "#8531da",
