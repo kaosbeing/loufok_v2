@@ -36,26 +36,6 @@ class JoueurModel extends Model {
     }
 
     /**
-     * Renvoie tout les joueurs par ordre alphabétique ayant participé a une loufokerie
-     * @param int $id id de la loufokerie
-     * @return array 
-     * @return null
-     */
-    public function findNameOrdered(int $id): ?array {
-        $sql = "SELECT nom_plume
-        FROM `{$this->tableName}` j
-        JOIN `{$this->tableNameContribution}` c ON j.id = c.id_joueur
-        WHERE c.id_loufokerie = :id
-        ORDER BY j.nom_plume ASC";
-        $sth = $this->query($sql, [':id' => $id]);
-        if ($sth && $sth->rowCount()) {
-            return $sth->fetchAll();
-        }
-
-        return null;
-    }
-
-    /**
      * Récupère tous les noms de joueurs d'une loufokerie
      * 
      * @param int $id id de la loufokerie
@@ -79,6 +59,7 @@ class JoueurModel extends Model {
             }
         }
 
+        sort($usernames);
         return $usernames;
     }
     /**

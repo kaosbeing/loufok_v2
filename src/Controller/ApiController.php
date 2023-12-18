@@ -18,7 +18,6 @@ class ApiController {
         } catch (PDOException $e) {
             // Handle responsebase connection errors
             http_response_code(500);
-
             echo 'Internal Server Error';
             exit;
         }
@@ -34,7 +33,7 @@ class ApiController {
             $response = [];
             if (LoufokerieModel::getInstance()->exists($id)) {
                 $response += LoufokerieModel::getInstance()->find($id);
-                $response["joueurs"] = JoueurModel::getInstance()->findNameOrdered($id);
+                $response["joueurs"] = JoueurModel::getInstance()->GetAllNamesFromLoufokerie($id);
                 $response["contributions"] = ContributionModel::getInstance()->getArrayFullOfEmptyStringsExceptItsNotEmpty($id);
             } else {
                 http_response_code(404);
