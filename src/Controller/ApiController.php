@@ -34,7 +34,7 @@ class ApiController {
             $response = [];
             if (LoufokerieModel::getInstance()->exists($id)) {
                 $response += LoufokerieModel::getInstance()->find($id);
-                $response["joueurs"] = JoueurModel::getInstance()->findOrdered($id)["nom_plume"];
+                $response["joueurs"] = JoueurModel::getInstance()->findNameOrdered($id);
                 $response["contributions"] = ContributionModel::getInstance()->getArrayFullOfEmptyStringsExceptItsNotEmpty($id);
             } else {
                 http_response_code(404);
