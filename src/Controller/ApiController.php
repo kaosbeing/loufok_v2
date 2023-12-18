@@ -18,6 +18,7 @@ class ApiController {
         } catch (PDOException $e) {
             // Handle responsebase connection errors
             http_response_code(500);
+
             echo 'Internal Server Error';
             exit;
         }
@@ -33,7 +34,7 @@ class ApiController {
             $response = [];
             if (LoufokerieModel::getInstance()->exists($id)) {
                 $response += LoufokerieModel::getInstance()->find($id);
-                $response["joueurs"] = JoueurModel::getInstance()->findOrdered($id);
+                $response["joueurs"] = JoueurModel::getInstance()->findOrdered($id)["nom_plume"];
                 $response["contributions"] = ContributionModel::getInstance()->getArrayFullOfEmptyStringsExceptItsNotEmpty($id);
             } else {
                 http_response_code(404);
@@ -102,6 +103,9 @@ class ApiController {
     private static function sendData($data) {
         $data = json_encode($data);
         header('Content-Type: application/json');
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Methods: GET, POST');
+        header('Access-Control-Allow-Headers: Content-Type, Accept');
         echo $data;
     }
 };
