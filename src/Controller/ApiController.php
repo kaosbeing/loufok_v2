@@ -8,7 +8,6 @@ class ApiController {
      */
     public static function allLoufokeries() {
         try {
-            $response = ["status" => 200];
             $loufokeries = LoufokerieModel::getInstance()->findAll();
             foreach ($loufokeries as $loufokerie) {
                 $response[] = $loufokerie;
@@ -31,10 +30,10 @@ class ApiController {
      */
     public static function loufokerie(int $id) {
         try {
+            $response = [];
             if (LoufokerieModel::getInstance()->exists($id)) {
-                $response["status"] = 200;
                 $response += LoufokerieModel::getInstance()->find($id);
-                $response["joueurs"] = JoueurModel::getInstance()->GetAllNamesFromLoufokerie($id);
+                $response["joueurs"] = JoueurModel::getInstance()->findOrdered($id);
                 $response["contributions"] = ContributionModel::getInstance()->getArrayFullOfEmptyStringsExceptItsNotEmpty($id);
             } else {
                 http_response_code(404);
@@ -67,10 +66,6 @@ class ApiController {
 
             if (!isset($queryBody->id) || !isset($queryBody->addLike)) {
                 http_response_code(203);
-                $response = [
-                    "status" => 203,
-                    "message" => "Wrong body data"
-                ];
             }
 
             if (LoufokerieModel::getInstance()->exists($queryBody->id)) {
@@ -81,14 +76,12 @@ class ApiController {
                 LoufokerieModel::getInstance()->update($queryBody->id, ["nb_jaime" => $nb_jaime]);
 
                 $response = [
-                    "status" => 200,
                     "message" => "Like added successfully"
                 ];
             } else {
                 http_response_code(404);
 
                 $response = [
-                    "status" => 404,
                     "message" => "No Loufokerie found for this ID"
                 ];
             }
@@ -99,7 +92,6 @@ class ApiController {
             // Handle responsebase connection errors
             http_response_code(500);
             $response = [
-                "success" => false,
                 "message" => $e
             ];
             echo json_encode($response);
