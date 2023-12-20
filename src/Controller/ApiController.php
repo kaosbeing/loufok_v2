@@ -65,7 +65,10 @@ class ApiController {
             $queryBody = json_decode(file_get_contents("php://input"));
 
             if (!isset($queryBody->id) || !isset($queryBody->addLike)) {
-                http_response_code(203);
+                http_response_code(400);
+                $response = [
+                    "message" => "Missing informations"
+                ];
             }
 
             if (LoufokerieModel::getInstance()->exists($queryBody->id)) {
@@ -75,9 +78,15 @@ class ApiController {
 
                 LoufokerieModel::getInstance()->update($queryBody->id, ["nb_jaime" => $nb_jaime]);
 
-                $response = [
-                    "message" => "Like added successfully"
-                ];
+                if ($queryBody->addLike) {
+                    $response = [
+                        "message" => "Like added successfully"
+                    ];
+                } else {
+                    $response = [
+                        "message" => "Like removed successfully"
+                    ];
+                }
             } else {
                 http_response_code(404);
 
