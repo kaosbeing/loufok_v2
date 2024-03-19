@@ -4,5 +4,6 @@ RewriteBase /loufok
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
+DirectoryIndex /public/index.php
 
 RewriteRule ^(.*)$ /public/$1 [L]
