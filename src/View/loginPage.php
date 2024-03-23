@@ -1,10 +1,8 @@
 <?php
 
-class LoginPage
-{
+class LoginPage {
 
-    public static function render(array $datas = [])
-    {
+    public static function render(array $datas = []) {
 ?>
         <!DOCTYPE html>
         <html lang="fr">
@@ -20,7 +18,7 @@ class LoginPage
 
         <body>
             <form action="" method="POST" class="form form--login"> <!-- To verify -->
-                <img src="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/medias/images/logotype.svg" alt="">
+                <img src="<?php echo APP_ASSETS_URL ?>/medias/images/logotype.svg" alt="">
                 <div class="form__element">
                     <label for="email">Email</label>
                     <input class='input--custom-style email' type="email" name="email" id="email" placeholder="Email" required>

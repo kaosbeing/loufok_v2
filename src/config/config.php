@@ -31,7 +31,7 @@ define('APP_SRC_DIRECTORY', APP_ROOT_DIRECTORY . 'src' . DS);
 /* chemin absolu vers le dossier des ressources CSS,JS,IMAGES */
 define('APP_ASSETS_DIRECTORY', APP_ROOT_DIRECTORY . 'public' . DS . 'assets' . DS);
 /* URL partielle de l'application - cette constante est utile pour le router */
-define('APP_ROOT_URL', str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']));
+define('APP_ROOT_URL', str_replace('/public', '', str_replace('/index.php', '', $_SERVER['SCRIPT_NAME'])));
 /* URL complète de l'application en http:// ou https:// */
 if (
     isset($_SERVER['HTTPS']) &&
@@ -47,3 +47,5 @@ define(
     'APP_ROOT_URL_COMPLETE',
     $protocol . "{$_SERVER['HTTP_HOST']}" . APP_ROOT_URL
 );
+
+define('APP_ASSETS_URL', str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']) . DS . 'assets');

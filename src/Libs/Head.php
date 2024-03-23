@@ -1,7 +1,6 @@
 <?php
 
-class Head
-{
+class Head {
 
 
     /**
@@ -19,8 +18,7 @@ class Head
     /**
      * Renvoie tous les tags HTML par défaut d'un head 
      */
-    public static function basehead()
-    {
+    public static function basehead() {
         Head::meta();
         Head::favicon();
         Head::manifest();
@@ -30,8 +28,7 @@ class Head
     /**
      * Renvoie les tags meta par défaut 
      */
-    public static function meta()
-    {
+    public static function meta() {
 ?>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,30 +39,27 @@ class Head
     /**
      * Renvoie les tags HTML pour l'import du favicon
      */
-    public static function favicon()
-    {
+    public static function favicon() {
     ?>
-        <link rel="preload" href="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/medias/images/favicon.svg" as="image" type="image/svg+xml">
-        <link rel="icon" href="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/medias/images/favicon.svg" type="image/svg+xml">
-        <link rel="icon" href="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/medias/images/favicon.png" type="image/png">
+        <link rel="preload" href="<?php echo APP_ASSETS_URL ?>/medias/images/favicon.svg" as="image" type="image/svg+xml">
+        <link rel="icon" href="<?php echo APP_ASSETS_URL ?>/medias/images/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="<?php echo APP_ASSETS_URL ?>/medias/images/favicon.png" type="image/png">
     <?php
     }
 
     /**
      * Importe une feuille css spécifiée
      */
-    public static function css($name)
-    {
+    public static function css($name) {
     ?>
-        <link rel="stylesheet" href="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/css/<?php echo $name ?>.css">
+        <link rel="stylesheet" href="<?php echo APP_ASSETS_URL ?>/css<?php echo DS . $name ?>.css">
     <?php
     }
 
     /**
      * Importe plusieurs feuilles css spécifiées
      */
-    public static function cssArray($cssArray)
-    {
+    public static function cssArray($cssArray) {
         foreach ($cssArray as $css) {
             Head::css($css);
         }
@@ -74,18 +68,16 @@ class Head
     /**
      * Renvoie un tag de script dont le nom est passé en paramètre
      */
-    public static function script(string $script)
-    {
+    public static function script(string $script) {
     ?>
-        <script src="<?php echo APP_ROOT_URL_COMPLETE ?>/assets/scripts/<?php echo $script ?>.js" defer></script>
+        <script src="<?php echo APP_ASSETS_URL ?>/scripts/<?php echo $script ?>.js" defer></script>
     <?php
     }
 
     /**
      * Renvoie les tags de scripts pour chaque script du tableau
      */
-    public static function scriptArray(array $scripts)
-    {
+    public static function scriptArray(array $scripts) {
         foreach ($scripts as $script) {
             Head::script($script);
         }
@@ -94,8 +86,7 @@ class Head
     /**
      * Renvoie un tag de titre 
      */
-    public static function title(string $title)
-    {
+    public static function title(string $title) {
     ?>
         <title><?php echo $title ?></title>
     <?php
@@ -104,10 +95,9 @@ class Head
     /**
      * Importe le manifest 
      */
-    public static function manifest()
-    {
+    public static function manifest() {
     ?>
-        <link rel="manifest" href="<?php echo APP_ROOT_URL_COMPLETE ?>/loufok.webmanifest">
+        <link rel="manifest" href="<?php echo APP_ASSETS_URL ?>/loufok.webmanifest">
 <?php
     }
 }

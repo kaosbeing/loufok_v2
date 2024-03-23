@@ -37,7 +37,7 @@ class userIndexPage {
                         </div>
                         <div class="loufokerie__infos">
                             <p class="loufokerie__dates"><?php echo $date_debut ?> | <?php echo $date_fin ?></p>
-                            <p class="loufokerie__contributions"><?php echo $datas['nb_contribution'] ?> / <?php echo $loufokerie['nb_contributions'] ?><img src="<?php echo APP_ROOT_URL_COMPLETE . "/assets/medias/images/contributions.svg" ?>" alt="contributions"></p>
+                            <p class="loufokerie__contributions"><?php echo $datas['nb_contribution'] ?> / <?php echo $loufokerie['nb_contributions'] ?><img src="<?php echo APP_ASSETS_URL . "/assets/medias/images/contributions.svg" ?>" alt="contributions"></p>
                         </div>
                         <hr class="loufokerie__separator">
                         <div class="loufokerie__content">
@@ -47,29 +47,29 @@ class userIndexPage {
                                 <p class="loufokerie__error"><?php echo $datas['error'] ?></p>
                             <?php
                             endif;
-                           
-                     if (!$datas["access"]) { ?>
-                        <div class="spinner">
-                            <div class="bounce1"></div>
-                            <div class="bounce2"></div>
-                            <div class="bounce3"></div>
-                        </div>
-                        <p>Veuillez revenir demain ou lorsque le participant actuel aura finit sa contribution.</p>
-                        <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace" ?>" aria-label="Retour"></a>
-                     <?php } else{
-               
-                            if ($datas['random_contribution']) :
-                            ?>
-                                <p><?php echo $datas["random_contribution"]["texte"] ?></p>
-                                <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace/loufokerie" ?>" class="loufokerie__joinContrib">Voir la loufokerie</a>
+
+                            if (!$datas["access"]) { ?>
+                                <div class="spinner">
+                                    <div class="bounce1"></div>
+                                    <div class="bounce2"></div>
+                                    <div class="bounce3"></div>
+                                </div>
+                                <p>Veuillez revenir demain ou lorsque le participant actuel aura finit sa contribution.</p>
+                                <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace" ?>" aria-label="Retour"></a>
+                                <?php } else {
+
+                                if ($datas['random_contribution']) :
+                                ?>
+                                    <p><?php echo $datas["random_contribution"]["texte"] ?></p>
+                                    <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace/loufokerie" ?>" class="loufokerie__joinContrib">Voir la loufokerie</a>
+                                <?php
+                                else :
+                                ?>
+                                    <p>Vous n'avez pas encore de contribution attribuée</p>
+                                    <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace/loufokerie" ?>" class="loufokerie__joinContrib">Rejoindre la loufokerie</a>
                             <?php
-                            else :
-                            ?>
-                                <p>Vous n'avez pas encore de contribution attribuée</p>
-                                <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace/loufokerie" ?>" class="loufokerie__joinContrib">Rejoindre la loufokerie</a>
-                            <?php
-                            endif;
-                        }?>
+                                endif;
+                            } ?>
                         </div>
                     <?php
                     } else { ?>
@@ -100,7 +100,7 @@ class userIndexPage {
                             <?php
                             endif; ?>
                             <p><?php echo $datas['old_contribution']['texte'] ?></p>
-                            
+
                             <a href="<?php echo APP_ROOT_URL_COMPLETE . "/mon-espace/historique" ?>" class="loufokerie__joinContrib">Voir la dernière Loufokerie</a>
                         </div>
                     <?php
@@ -112,7 +112,7 @@ class userIndexPage {
             <?php Utils::footer(); ?>
         </body>
         <script>
-            var user = <?php echo $datas['user'];?>;
+            var user = <?php echo $datas['user']; ?>;
         </script>
 
         </html>

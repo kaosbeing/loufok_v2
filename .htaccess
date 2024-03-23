@@ -1,9 +1,6 @@
 RewriteEngine On
-
 RewriteBase /loufok
 
-RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^src/.*$ - [F,L]
 RewriteCond %{REQUEST_FILENAME} !-f
-DirectoryIndex public/index.php
-
-RewriteRule ^ index.php [L]
+RewriteRule ^ public/index.php [L]
